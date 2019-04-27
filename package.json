@@ -1,0 +1,21 @@
+{
+  "name": "api-mdc",
+  "version": "1.0.0",
+  "description": "API del proyecto MDC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "MDC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felisito16/API-MDC/issues"
+  },
+  "homepage": "https://github.com/felisito16/API-MDC#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.4"
+  }
+}
