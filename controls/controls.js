@@ -19,12 +19,20 @@ function validarUsuario(req, res) {
             })
         } else {
             if (usuario) {
-                res.status(200).send({
-                    encontrado: true,
-                    usuario,
-                    userEmail,
-                    userPass
+                var encontrado = false;
+                usuario.forEach((e) => {
+                    while (encontrado == false) {
+                        if (e.user == userEmail && e.pass == userPass) { encontrado = true }
+                    }
                 })
+                if (encontrado == true) {
+                    res.status(200).send({
+                        encontrado: true,
+                        usuario,
+                        userEmail,
+                        userPass
+                    })
+                }
             } else {
                 res.status(200).send({
                     encontrado: false
