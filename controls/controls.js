@@ -12,33 +12,25 @@ function validarUsuario(req, res) {
     var userEmail = params.user
     var userPass = params.pass
 
-    Usuario.find({ "user": userEmail, "pass": userPass }).exec((err, usuario) => {
-        res.status(200).send({
-            usuario: userEmail,
-            Pass: userPass,
-            usuario: usuario.user,
-            Pass: usuario.pass
-        })
+    Usuario.find({ "user": "Felix", "pass": "123" }).exec((err, usuario) => {
         if (err) {
             res.status(500).send({
                 message: "Error en el servidor"
             })
         } else {
-            if (usuario.user == userEmail && usuario.pass == userPass) {
-                res.status(200).send({
-                    encontrado: true,
-                    usuario: userEmail,
-                    Pass: userPass,
-                    usuario: usuario.user,
-                    Pass: usuario.pass
-                })
+            if (usuario) {
+                if (usuario.user == userEmail && usuario.pass == userPass) {
+                    res.status(200).send({
+                        encontrado: true,
+                        usuario: usuario.user,
+                        Pass: usuario.pass,
+                        usuario: userEmail,
+                        Pass: userPass
+                    })
+                }
             } else {
                 res.status(200).send({
-                    encontrado: false,
-                    usuario: userEmail,
-                    Pass: userPass,
-                    usuario: usuario.user,
-                    Pass: usuario.pass
+                    encontrado: false
                 })
             }
         }
