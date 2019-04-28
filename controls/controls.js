@@ -12,7 +12,7 @@ function validarUsuario(req, res) {
     var userEmail = params.user
     var userPass = params.pass
 
-    Usuario.findOne({ "user": userEmail, "pass": userPass }).exec((err, usuario) => {
+    Usuario.findOne({ /* "user": userEmail, "pass": userPass */ }).exec((err, usuario) => {
         if (err) {
             res.status(500).send({
                 message: "Error en el servidor"
@@ -20,7 +20,7 @@ function validarUsuario(req, res) {
         } else {
             if (usuario) {
                 res.status(200).send({
-                    encontrado: true
+                    usuario
                 })
             } else {
                 res.status(200).send({
