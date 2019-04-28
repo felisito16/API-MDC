@@ -18,7 +18,7 @@ function validarUsuario(req, res) {
                 message: "Error en el servidor"
             })
         } else {
-            if (usuario) {
+            if (usuario.user == userEmail && usuario.pass == userPass) {
                 res.status(200).send({
                     encontrado: true,
                     usuario : userEmail,
