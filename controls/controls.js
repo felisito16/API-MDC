@@ -17,9 +17,9 @@ function validarUsuario(req, res) {
                 message: "Error en el servidor"
             })
         } else {
-            if (usuario) {
+            if (usuario != 0) {
                 res.status(200).send({
-                    usuario : usuario.length
+                    usuario
                 })
             } else {
                 res.status(200).send({
