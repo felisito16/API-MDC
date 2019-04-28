@@ -22,11 +22,17 @@ function validarUsuario(req, res) {
                 res.status(200).send({
                     encontrado: true,
                     usuario : userEmail,
-                    Pass : userPass
+                    Pass : userPass,
+                    usuario : usuario.user,
+                    Pass : usuario.pass
                 })
             } else {
                 res.status(200).send({
-                    encontrado: false
+                    encontrado: false,
+                    usuario : userEmail,
+                    Pass : userPass,
+                    usuario : usuario.user,
+                    Pass : usuario.pass
                 })
             }
         }
