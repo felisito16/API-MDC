@@ -19,7 +19,7 @@ function validarUsuario(req, res) {
         } else {
             if (usuario) {
                 res.status(200).send({
-                    usuario
+                    usuario : usuario.length
                 })
             } else {
                 res.status(200).send({
