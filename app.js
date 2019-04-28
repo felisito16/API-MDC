@@ -17,6 +17,11 @@ app.get('/getAllUsers', (req, res) => {
         message: 'Ruta /getAllUsers'
     })
 })
+app.get('/', (req, res) => {
+    res.status(200).send({
+        message: 'Ruta /'
+    })
+})
 
 
 module.exports = app;
