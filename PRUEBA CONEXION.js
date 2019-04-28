@@ -9,7 +9,7 @@ $(document).ready(function() {
         var pass = sha512($("#pass-log").val());
 
         if (email != "" && pass != "") {
-            $.get("https://proyecto-studium.herokuapp.com/api/user/getEmail/" + email, function(res) {
+            $.get("https://proyecto-studium.herokuapp.com/validar/" + email, function(res) {
                 if (email == res.emailDocument.Email && pass == res.emailDocument.Pass) {
                     localStorage.setItem("tk", res.emailDocument._id);
                     location.href = "app";

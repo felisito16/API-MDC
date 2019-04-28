@@ -6,6 +6,31 @@ function prueba(req, res) {
     });
 }
 
+function validarUsuario(req, res) {
+    var params = req.body;
+
+    var userEmail = params.user
+    var userPass = params.pass
+
+    Usuario.find({ "user": userEmail, "pass": userPass }).exec((err, usuario) => {
+        if (err) {
+            res.status(500).send({
+                message: "Error en el servidor"
+            })
+        } else {
+            if (usuario) {
+                res.status(200).send({
+                    encontrado: true
+                })
+            } else {
+                res.status(200).send({
+                    encontrado: false
+                })
+            }
+        }
+    })
+}
+
 function saveUsuario(req, res) {
     var usuario = new Usuario();
 
@@ -34,12 +59,13 @@ function saveUsuario(req, res) {
         })
     } else {
         res.status(200).send({
-            message : "El nombre de usuario y la contraseña son obligatorios"
+            message: "El nombre de usuario y la contraseña son obligatorios"
         })
     }
 }
 
 module.exports = {
     prueba,
-    saveUsuario
+    saveUsuario,
+    validarUsuario
 }
