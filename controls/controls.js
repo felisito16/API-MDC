@@ -32,10 +32,14 @@ function validarUsuario(req, res) {
                         userEmail,
                         userPass
                     })
+                } else {
+                    res.status(200).send({
+                        encontrado: false
+                    })
                 }
             } else {
                 res.status(200).send({
-                    encontrado: false
+                    message : "No se han obtenido resultados"
                 })
             }
         }
