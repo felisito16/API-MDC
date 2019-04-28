@@ -7,12 +7,11 @@ function prueba(req, res) {
 }
 
 function validarUsuario(req, res) {
-    var params = req.body;
+   
+    var userEmail = req.params.usuario
+    var userPass = req.params.pass
 
-    var userEmail = params.user
-    var userPass = params.pass
-
-    Usuario.find({ /* "user": userEmail, "pass": userPass */ }).exec((err, usuario) => {
+    Usuario.find({ "user": userEmail, "pass": userPass }).exec((err, usuario) => {
         if (err) {
             res.status(500).send({
                 message: "Error en el servidor"
