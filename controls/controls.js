@@ -19,10 +19,12 @@ function validarUsuario(req, res) {
             })
         } else {
             if (usuario) {
-                    res.status(200).send({
-                        encontrado: true,
-                        usuario
-                    })
+                res.status(200).send({
+                    encontrado: true,
+                    usuario,
+                    userEmail,
+                    userPass
+                })
             } else {
                 res.status(200).send({
                     encontrado: false
