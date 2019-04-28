@@ -7,9 +7,10 @@ function prueba(req, res) {
 }
 
 function validarUsuario(req, res) {
+    var params = req.body;
 
-    var userEmail = req.params.user
-    var userPass = req.params.pass
+    var userEmail = params.user
+    var userPass = params.pass
 
     Usuario.findOne({ "user": userEmail, "pass": userPass }).exec((err, usuario) => {
         if (err) {
