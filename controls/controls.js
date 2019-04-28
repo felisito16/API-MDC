@@ -7,39 +7,23 @@ function prueba(req, res) {
 }
 
 function validarUsuario(req, res) {
-    var params = req.body;
 
-    var userEmail = params.user
-    var userPass = params.pass
+    var userEmail = req.params.user
+    var userPass = req.params.pass
 
-    Usuario.find({}).exec((err, usuario) => {
+    Usuario.findOne({ "user": userEmail, "pass": userPass }).exec((err, usuario) => {
         if (err) {
             res.status(500).send({
                 message: "Error en el servidor"
             })
         } else {
             if (usuario) {
-                var encontrado = false;
-                usuario.forEach((e) => {
-                    while (encontrado == false) {
-                        if (e.user == userEmail && e.pass == userPass) { encontrado = true }
-                    }
+                res.status(200).send({
+                    encontrado: true
                 })
-                if (encontrado == true) {
-                    res.status(200).send({
-                        encontrado: true,
-                        usuario,
-                        userEmail,
-                        userPass
-                    })
-                } else {
-                    res.status(200).send({
-                        encontrado: false
-                    })
-                }
             } else {
                 res.status(200).send({
-                    message : "No se han obtenido resultados"
+                    encontrado: false
                 })
             }
         }
