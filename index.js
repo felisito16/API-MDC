@@ -12,3 +12,5 @@ mongoose.connect("mongodb://admin:MdC-7824@ds137687.mlab.com:37687/heroku_wqxg0r
             console.log("El servidor esta corriendo en https://mdcproyecto.herokuapp.com/");
         })
     }).catch(err => console.log(err))
+
+    // Hola Luis y Alejandro
