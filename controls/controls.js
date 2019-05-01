@@ -7,7 +7,7 @@ function prueba(req, res) {
 }
 
 function validarUsuario(req, res) {
-   
+
     var userEmail = req.params.usuario
     var userPass = req.params.pass
 
@@ -63,8 +63,42 @@ function saveUsuario(req, res) {
     }
 }
 
+function validar(req, res) {
+
+    var params = req.body;
+
+    if (params.user && params.pass) {
+        usuario.user = params.user
+        usuario.pass = params.pass
+
+        usuario.save((err, userStored) => {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor"
+                })
+            } else {
+                if (userStored) {
+                    res.status(200).send({
+                        usuario: userStored
+                    })
+                } else {
+                    res.status(200).send({
+                        message: "No se ha guardado el usuario"
+                    })
+                }
+            }
+        })
+    } else {
+        res.status(200).send({
+            message: "El nombre de usuario y la contraseña son obligatorios"
+        })
+    }
+}
+
+
 module.exports = {
     prueba,
     saveUsuario,
-    validarUsuario
+    validarUsuario,
+    validar
 }
