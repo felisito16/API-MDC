@@ -5,7 +5,7 @@ var api = express.Router()
 
 api.get("/prueba", UsersController.prueba)
 //api.get("/validarUsuario/:usuario/:pass", UsersController.validarUsuario)
-api.post("/validar", UsersController.validarUsuario)
+api.post("/validar", UsersController.validar)
 api.post("/save", UsersController.saveUsuario)
 
 module.exports = api;
