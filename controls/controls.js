@@ -67,7 +67,7 @@ function validar(req, res) {
 
     var params = req.body;
 
-    Usuario.find({ "user": params.usuario, "pass": params.pass }).exec((err, usuario) => {
+    Usuario.find({ "user": params.user, "pass": params.pass }).exec((err, usuario) => {
         if (err) {
             res.status(500).send({
                 message: "Error en el servidor"
