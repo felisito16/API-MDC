@@ -80,8 +80,6 @@ function validar(req, res) {
             } else {
                 res.status(200).send({
                     encontrado: false,
-                    paramsUsuario,
-                    paramsPass,
                 })
             }
         }
