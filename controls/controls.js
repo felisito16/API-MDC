@@ -66,8 +66,7 @@ function saveUsuario(req, res) {
 function validar(req, res) {
 
     var params = req.body;
-    var paramsUsuario = params.user;
-    var paramsPass = params.pass;
+
     Usuario.find({ "user": params.user, "pass": params.pass }).exec((err, usuario) => {
         if (err) {
             res.status(500).send({
