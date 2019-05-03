@@ -66,28 +66,35 @@ function saveUsuario(req, res) {
 function validar(req, res) {
 
     var params = req.body;
-    var paramsUsuario = params.user;
-    var paramsPass = SHA512(params.pass);
 
-    Usuario.find({ "user": paramsUsuario, "pass": paramsPass }).exec((err, usuario) => {
-        if (err) {
-            res.status(500).send({
-                message: "Error en el servidor"
-            })
-        } else {
-            if (usuario != 0) {
-                res.status(200).send({
-                    usuario
+    if (params.user && params.pass) {
+        var paramsUsuario = params.user;
+        var paramsPass = SHA512(params.pass);
+
+        Usuario.find({ "user": paramsUsuario, "pass": paramsPass }).exec((err, usuario) => {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor"
                 })
             } else {
-                res.status(200).send({
-                    encontrado: false,
-                    paramsUsuario,
-                    paramsPass,
-                })
+                if (usuario != 0) {
+                    res.status(200).send({
+                        usuario
+                    })
+                } else {
+                    res.status(200).send({
+                        encontrado: false,
+                        paramsUsuario,
+                        paramsPass,
+                    })
+                }
             }
-        }
-    })
+        })
+    } else {
+        res.status(200).send({
+            message : "Los parametros no se han recogido correctamente o no han sido escritos"
+        })
+    }
 }
 
 
