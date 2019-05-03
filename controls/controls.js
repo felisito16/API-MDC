@@ -67,9 +67,6 @@ function validar(req, res) {
 
     var params = req.body;
 
-    var testUser = params.user
-    var testPass = params.pass
-
     if (params.user && params.pass) {
         var paramsUsuario = params.user;
         var paramsPass = SHA512(params.pass);
@@ -96,8 +93,7 @@ function validar(req, res) {
     } else {
         res.status(200).send({
             message : "Los parametros no se han recogido correctamente o no han sido escritos",
-            testUser : testUser,
-            testPass : testPass,
+            params
         })
     }
 }
