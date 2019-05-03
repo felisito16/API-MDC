@@ -1,4 +1,7 @@
 var Usuario = require("../models/usuarios")
+var Matricula = require("../models/matriculas")
+var Ciclo = require("../models/ciclos")
+var Asignatura = require("../models/asignaturas")
 
 function prueba(req, res) {
     res.status(200).send({
