@@ -71,7 +71,7 @@ function validar(req, res) {
     var params = req.body;
 
     var paramsUsuario = params.user;
-    var paramsPass = SHA512(params.pass);
+    var paramsPass = params.pass;
 
     Usuario.find({ "user": paramsUsuario, "pass": paramsPass }).exec((err, usuario) => {
         if (err) {
