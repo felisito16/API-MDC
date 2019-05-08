@@ -124,13 +124,8 @@ var matriculasSchema = Schema({
         }
     },
 
-    estado_matricula: {
-        pendiente: String,
-        erronea: String,
-        aceptada: String
-    }
-
-
+    estado_matricula: String
+    
 });
 
 module.exports = mongoose.model('Matriculas', matriculasSchema);
