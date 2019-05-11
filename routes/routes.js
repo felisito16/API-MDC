@@ -7,5 +7,6 @@ api.get("/prueba", UsersController.prueba)
 api.get("/validarUsuario/:usuario/:pass", UsersController.validarUsuario)
 api.post("/validar", UsersController.validar)
 api.post("/save", UsersController.saveUsuario)
+api.post("/saveMatricula", UsersController.crearMatricula)
 
 module.exports = api;

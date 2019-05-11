@@ -170,10 +170,75 @@ function crearMatricula() {
 
     // Firma interesado
     matricula.firma_interesado = params.enlaceFirmaInteresado
+
+    // Observaciones
     matricula.observaciones = params.observaciones
+
+    // Sello del centro
     matricula.sello_centro = params.selloCentro
+
+    // Año escolar
     matricula.firma_interesado = params.enlaceFirmaInteresado
 
+    // Acceso requisitos academicos
+    matricula.acceso_requisitos_academicos.certificado_bachillerato = params.certificadoBachillerato
+    matricula.acceso_requisitos_academicos.certificado_grado_medio = params.certificadoGradoMedio
+    matricula.acceso_requisitos_academicos.certificado_prueba_acceso = params.certificadoPruebaAcceso
+    matricula.acceso_requisitos_academicos.fotocopia_certificado = params.fotoCopiaCertificado
+
+    // Acceso sin requisitos
+    matricula.acceso_sin_requisitos.certificado_experiencia_laboral = params.certificadoExperienciaLaboral
+
+    // Abono banco
+    matricula.abono_banco = params.abonoBanco
+
+    // Repetidor cursos
+    matricula.repetidor_cursos = params.repetidor
+
+    // Titular cuenta
+    matricula.titular_cuenta = params.titularCuenta
+
+    // Domicilio cuenta
+    matricula.domicilio_cuenta = params.domCuenta
+
+    // Banco de la cuenta
+    matricula.banco_cuenta = params.bancoCuenta
+
+    // Datos cuenta bancario
+    matricula.cuenta_bancaria.iban = params.cuentaBancariaIban
+    matricula.cuenta_bancaria.banco = params.cuentaBancariaBanco
+    matricula.cuenta_bancaria.sucursal = params.cuentaBancariaSucursal
+    matricula.cuenta_bancaria.d_c = params.cuentaBancariaD_C
+    matricula.cuenta_bancaria.c_c = params.cuentaBancariaC_C
+
+    // Firma titular
+    matricula.firma_titular = params.firmaTitular
+
+    // DNI Titular
+    matricula.dni_titular = params.dniTitular
+
+    // Codigo postal del titular
+    matricula.codigo_postal_titular = params.codigoPostalTitular
+
+    // Telefono del titular
+    matricula.telefono_titular = params.telefonoTitular
+
+    // Pagos realizados
+    matricula.pagos_realizados = params.pagosRealizados
+
+    // Tipo de pago
+    matricula.tipo_pagos.metalico = params.metalico
+    matricula.tipo_pagos.transferencia = params.transferencia
+    matricula.tipo_pagos.domiciliacion_bancaria = params.domiciliacionBancaria
+
+    // Gestion matricula
+    matricula.gestion_matricula.usuario = params.user
+    matricula.gestion_matricula.fecha_gestion.dia = params.diaFechaGestion
+    matricula.gestion_matricula.fecha_gestion.mes = params.mesFechaGestion
+    matricula.gestion_matricula.fecha_gestion.anio = params.anioFechaGestion
+
+    // Estado de la matricula actual
+    matricula.estado_matricula = params.estadoMatricula
 
 }
 
@@ -183,7 +248,8 @@ module.exports = {
     prueba,
     saveUsuario,
     validarUsuario,
-    validar
+    validar,
+    crearMatricula
 }
 
 // Funciones ADICIONALES

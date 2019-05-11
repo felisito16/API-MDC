@@ -93,7 +93,7 @@ var matriculasSchema = Schema({
     titular_cuenta: String,
     domicilio_cuenta: String,
     banco_cuenta: String,
-    
+
     cuenta_bancaria: {
         iban: String,
         banco: String,
@@ -115,17 +115,17 @@ var matriculasSchema = Schema({
         domiciliacion_bancaria: Number
     },
 
-    gestion_matricula:{
+    gestion_matricula: {
         usuario: String,
-        fecha_gestion:{
+        fecha_gestion: {
             dia: Number,
             mes: Number,
             anio: Number
         }
     },
 
-    estado_matricula: String
-    
+    estado_matricula: String // pendiente, erronea o tramite
+
 });
 
 module.exports = mongoose.model('Matriculas', matriculasSchema);
