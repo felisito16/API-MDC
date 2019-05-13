@@ -98,13 +98,43 @@ function crearMatricula() {
 
     var params = req.body;
 
+    if (params.nombre && params.primerApellido && params.segundoApellido) {
+
+        matricula.nombre_completo.nombre = params.nombre
+        matricula.nombre_completo.primer_apellido = params.primerApellido
+        matricula.nombre_completo.segundo_apellido = params.segundoApellido
+
+        matricula.save((err, matriculaStore) => {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor"
+                })
+            } else {
+                if (userStored) {
+                    res.status(200).send({
+                        usuario: matriculaStore
+                    })
+                } else {
+                    res.status(200).send({
+                        message: "No se ha guardado la matricula",
+                        matriculaStore
+                    })
+                }
+            }
+        })
+    } else {
+        res.status(200).send({
+            message: "Introduce los campos obligatorios"
+        })
+    }
+
     // Nombre completo
-    matricula.nombre_completo.nombre = params.nombre;
-    matricula.nombre_completo.primer_apellido = params.primerApellido;
-    matricula.nombre_completo.segundo_apellido = params.segundoApellido;
+    /* params.nombre ? matricula.nombre_completo.nombre = params.nombre : ""
+    params.primerApellido ? matricula.nombre_completo.primer_apellido = params.primerApellido : "";
+    params.segundoApellido ? matricula.nombre_completo.segundo_apellido = params.segundoApellido : ""; */
 
     // Fecha nacimiento
-    var arrFechaNacimiento = params.fechaNacimiento.split("/")
+    /* var arrFechaNacimiento = params.fechaNacimiento.split("/")
     matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
     matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
     matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
@@ -238,7 +268,7 @@ function crearMatricula() {
     matricula.gestion_matricula.fecha_gestion.anio = params.anioFechaGestion
 
     // Estado de la matricula actual
-    matricula.estado_matricula = params.estadoMatricula
+    matricula.estado_matricula = params.estadoMatricula */
 
 }
 
