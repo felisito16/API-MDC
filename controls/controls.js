@@ -110,9 +110,9 @@ function crearMatricula() {
                     message: "Error en el servidor"
                 })
             } else {
-                if (userStored) {
+                if (matriculaStore) {
                     res.status(200).send({
-                        usuario: matriculaStore
+                        matricula: matriculaStore
                     })
                 } else {
                     res.status(200).send({
@@ -127,7 +127,7 @@ function crearMatricula() {
             message: "Introduce los campos obligatorios"
         })
     }
-
+}
     // Nombre completo
     /* params.nombre ? matricula.nombre_completo.nombre = params.nombre : ""
     params.primerApellido ? matricula.nombre_completo.primer_apellido = params.primerApellido : "";
@@ -270,7 +270,7 @@ function crearMatricula() {
     // Estado de la matricula actual
     matricula.estado_matricula = params.estadoMatricula */
 
-}
+
 
 
 
