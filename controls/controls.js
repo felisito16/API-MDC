@@ -98,181 +98,174 @@ function crearMatricula() {
 
     var params = req.body;
 
-    if (params.nombre && params.primerApellido && params.segundoApellido) {
+    var nombre = params.nombre
+    var primerApellido = params.primerApellido
+    var segundoApellido = params.segundoApellido
 
-        matricula.nombre_completo.nombre = params.nombre
-        matricula.nombre_completo.primer_apellido = params.primerApellido
-        matricula.nombre_completo.segundo_apellido = params.segundoApellido
+    matricula.nombre_completo.nombre = nombre
+    matricula.nombre_completo.primer_apellido = primerApellido
+    matricula.nombre_completo.segundo_apellido = segundoApellido
 
-        matricula.save((err, matriculaStore) => {
-            if (err) {
-                res.status(500).send({
-                    message: "Error en el servidor"
+    matricula.save((err, matriculaStore) => {
+        if (err) {
+            res.status(500).send({
+                message: "Error en el servidor"
+            })
+        } else {
+            if (matriculaStore) {
+                res.status(200).send({
+                    matricula: matriculaStore
                 })
             } else {
-                if (matriculaStore) {
-                    res.status(200).send({
-                        matricula: matriculaStore
-                    })
-                } else {
-                    res.status(200).send({
-                        message: "No se ha guardado la matricula",
-                        matriculaStore
-                    })
-                }
+                res.status(200).send({
+                    message: "No se ha guardado la matricula",
+                    matriculaStore
+                })
             }
-        })
-    } else {
-        res.status(200).send({
-            message: "Introduce los campos obligatorios"
-        })
-    }
+        }
+    })
 }
-    // Nombre completo
-    /* params.nombre ? matricula.nombre_completo.nombre = params.nombre : ""
-    params.primerApellido ? matricula.nombre_completo.primer_apellido = params.primerApellido : "";
-    params.segundoApellido ? matricula.nombre_completo.segundo_apellido = params.segundoApellido : ""; */
+// Nombre completo
+/* params.nombre ? matricula.nombre_completo.nombre = params.nombre : ""
+params.primerApellido ? matricula.nombre_completo.primer_apellido = params.primerApellido : "";
+params.segundoApellido ? matricula.nombre_completo.segundo_apellido = params.segundoApellido : ""; */
 
-    // Fecha nacimiento
-    /* var arrFechaNacimiento = params.fechaNacimiento.split("/")
-    matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
-    matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
-    matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
+// Fecha nacimiento
+/* var arrFechaNacimiento = params.fechaNacimiento.split("/")
+matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
+matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
+matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
 
-    // DNI
-    matricula.dni.numero = params.numDNI
-    matricula.dni.tipo_documentacion = params.tipo_documentacion
+// DNI
+matricula.dni.numero = params.numDNI
+matricula.dni.tipo_documentacion = params.tipo_documentacion
 
-    // Telefono
-    matricula.telefono = params.telefono
-    
-    // Nacionalidad
-    matricula.nacionalidad = params.nacionalidad
+// Telefono
+matricula.telefono = params.telefono
+ 
+// Nacionalidad
+matricula.nacionalidad = params.nacionalidad
 
-    // Domicilio
-    matricula.domicilio.calle = params.calleDom
-    matricula.domicilio.numero = params.numeroDom
-    
-    // Provincia
-    matricula.provincia = params.provincia
+// Domicilio
+matricula.domicilio.calle = params.calleDom
+matricula.domicilio.numero = params.numeroDom
+ 
+// Provincia
+matricula.provincia = params.provincia
 
-    // Localidad
-    matricula.localidad.nombre = params.nombreLocalidad
-    matricula.localidad.codigo_postal = params.cpLocalidad
+// Localidad
+matricula.localidad.nombre = params.nombreLocalidad
+matricula.localidad.codigo_postal = params.cpLocalidad
 
-    // Enlace foto dni
-    matricula.foto_dni_pasaporte = params.enlaceFotoDNI
-    
-    // Enlace foto seguridad social
-    matricula.foto_seguridad_social = params.enlaceFotoSeguridadSocial
+// Enlace foto dni
+matricula.foto_dni_pasaporte = params.enlaceFotoDNI
+ 
+// Enlace foto seguridad social
+matricula.foto_seguridad_social = params.enlaceFotoSeguridadSocial
 
-    // Enlace usuario
-    matricula.foto_usuario = params.enlaceFotoUsuario
+// Enlace usuario
+matricula.foto_usuario = params.enlaceFotoUsuario
 
-    // Email
-    matricula.email = params.email
+// Email
+matricula.email = params.email
 
-    // Via acceso
-    matricula.via_acceso.requisitos_academicos = params.requisitosAcademicos
-    matricula.via_acceso.prueba_acceso = params.pruebaAcceso
-    matricula.via_acceso.sin_requisitos_academicos = params.sinRequisitosAcademicos
+// Via acceso
+matricula.via_acceso.requisitos_academicos = params.requisitosAcademicos
+matricula.via_acceso.prueba_acceso = params.pruebaAcceso
+matricula.via_acceso.sin_requisitos_academicos = params.sinRequisitosAcademicos
 
-    // Centro de inscripcion
-    matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
-    matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
-    matricula.centro_inscripcion.codigo_centro = params.codigoCentro
+// Centro de inscripcion
+matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
+matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
+matricula.centro_inscripcion.codigo_centro = params.codigoCentro
 
-    // Familia profesional
-    matricula.familia_profesional = params.familiaProfesiona
+// Familia profesional
+matricula.familia_profesional = params.familiaProfesiona
 
-    // Ciclo formativo
-    matricula.ciclo_formativo.curso = params.cicloSeleccionado
-    matricula.ciclo_formativo.grado.medio = params.medio
-    matricula.ciclo_formativo.grado.superior = params.superior
+// Ciclo formativo
+matricula.ciclo_formativo.curso = params.cicloSeleccionado
+matricula.ciclo_formativo.grado.medio = params.medio
+matricula.ciclo_formativo.grado.superior = params.superior
 
-    // Modulos profesionales
-    matricula.modulos_profesionales = params.modulosProfesionales
+// Modulos profesionales
+matricula.modulos_profesionales = params.modulosProfesionales
 
-    // Fecha de inscripcion
-    matricula.fecha_inscripcion.dia = params.diaInscripcion
-    matricula.fecha_inscripcion.mes = params.mesInscripcion
-    matricula.fecha_inscripcion.anio = params.anioInscripcion
+// Fecha de inscripcion
+matricula.fecha_inscripcion.dia = params.diaInscripcion
+matricula.fecha_inscripcion.mes = params.mesInscripcion
+matricula.fecha_inscripcion.anio = params.anioInscripcion
 
-    // Firma interesado
-    matricula.firma_interesado = params.enlaceFirmaInteresado
+// Firma interesado
+matricula.firma_interesado = params.enlaceFirmaInteresado
 
-    // Observaciones
-    matricula.observaciones = params.observaciones
+// Observaciones
+matricula.observaciones = params.observaciones
 
-    // Sello del centro
-    matricula.sello_centro = params.selloCentro
+// Sello del centro
+matricula.sello_centro = params.selloCentro
 
-    // Año escolar
-    matricula.firma_interesado = params.enlaceFirmaInteresado
+// Año escolar
+matricula.firma_interesado = params.enlaceFirmaInteresado
 
-    // Acceso requisitos academicos
-    matricula.acceso_requisitos_academicos.certificado_bachillerato = params.certificadoBachillerato
-    matricula.acceso_requisitos_academicos.certificado_grado_medio = params.certificadoGradoMedio
-    matricula.acceso_requisitos_academicos.certificado_prueba_acceso = params.certificadoPruebaAcceso
-    matricula.acceso_requisitos_academicos.fotocopia_certificado = params.fotoCopiaCertificado
+// Acceso requisitos academicos
+matricula.acceso_requisitos_academicos.certificado_bachillerato = params.certificadoBachillerato
+matricula.acceso_requisitos_academicos.certificado_grado_medio = params.certificadoGradoMedio
+matricula.acceso_requisitos_academicos.certificado_prueba_acceso = params.certificadoPruebaAcceso
+matricula.acceso_requisitos_academicos.fotocopia_certificado = params.fotoCopiaCertificado
 
-    // Acceso sin requisitos
-    matricula.acceso_sin_requisitos.certificado_experiencia_laboral = params.certificadoExperienciaLaboral
+// Acceso sin requisitos
+matricula.acceso_sin_requisitos.certificado_experiencia_laboral = params.certificadoExperienciaLaboral
 
-    // Abono banco
-    matricula.abono_banco = params.abonoBanco
+// Abono banco
+matricula.abono_banco = params.abonoBanco
 
-    // Repetidor cursos
-    matricula.repetidor_cursos = params.repetidor
+// Repetidor cursos
+matricula.repetidor_cursos = params.repetidor
 
-    // Titular cuenta
-    matricula.titular_cuenta = params.titularCuenta
+// Titular cuenta
+matricula.titular_cuenta = params.titularCuenta
 
-    // Domicilio cuenta
-    matricula.domicilio_cuenta = params.domCuenta
+// Domicilio cuenta
+matricula.domicilio_cuenta = params.domCuenta
 
-    // Banco de la cuenta
-    matricula.banco_cuenta = params.bancoCuenta
+// Banco de la cuenta
+matricula.banco_cuenta = params.bancoCuenta
 
-    // Datos cuenta bancario
-    matricula.cuenta_bancaria.iban = params.cuentaBancariaIban
-    matricula.cuenta_bancaria.banco = params.cuentaBancariaBanco
-    matricula.cuenta_bancaria.sucursal = params.cuentaBancariaSucursal
-    matricula.cuenta_bancaria.d_c = params.cuentaBancariaD_C
-    matricula.cuenta_bancaria.c_c = params.cuentaBancariaC_C
+// Datos cuenta bancario
+matricula.cuenta_bancaria.iban = params.cuentaBancariaIban
+matricula.cuenta_bancaria.banco = params.cuentaBancariaBanco
+matricula.cuenta_bancaria.sucursal = params.cuentaBancariaSucursal
+matricula.cuenta_bancaria.d_c = params.cuentaBancariaD_C
+matricula.cuenta_bancaria.c_c = params.cuentaBancariaC_C
 
-    // Firma titular
-    matricula.firma_titular = params.firmaTitular
+// Firma titular
+matricula.firma_titular = params.firmaTitular
 
-    // DNI Titular
-    matricula.dni_titular = params.dniTitular
+// DNI Titular
+matricula.dni_titular = params.dniTitular
 
-    // Codigo postal del titular
-    matricula.codigo_postal_titular = params.codigoPostalTitular
+// Codigo postal del titular
+matricula.codigo_postal_titular = params.codigoPostalTitular
 
-    // Telefono del titular
-    matricula.telefono_titular = params.telefonoTitular
+// Telefono del titular
+matricula.telefono_titular = params.telefonoTitular
 
-    // Pagos realizados
-    matricula.pagos_realizados = params.pagosRealizados
+// Pagos realizados
+matricula.pagos_realizados = params.pagosRealizados
 
-    // Tipo de pago
-    matricula.tipo_pagos.metalico = params.metalico
-    matricula.tipo_pagos.transferencia = params.transferencia
-    matricula.tipo_pagos.domiciliacion_bancaria = params.domiciliacionBancaria
+// Tipo de pago
+matricula.tipo_pagos.metalico = params.metalico
+matricula.tipo_pagos.transferencia = params.transferencia
+matricula.tipo_pagos.domiciliacion_bancaria = params.domiciliacionBancaria
 
-    // Gestion matricula
-    matricula.gestion_matricula.usuario = params.user
-    matricula.gestion_matricula.fecha_gestion.dia = params.diaFechaGestion
-    matricula.gestion_matricula.fecha_gestion.mes = params.mesFechaGestion
-    matricula.gestion_matricula.fecha_gestion.anio = params.anioFechaGestion
+// Gestion matricula
+matricula.gestion_matricula.usuario = params.user
+matricula.gestion_matricula.fecha_gestion.dia = params.diaFechaGestion
+matricula.gestion_matricula.fecha_gestion.mes = params.mesFechaGestion
+matricula.gestion_matricula.fecha_gestion.anio = params.anioFechaGestion
 
-    // Estado de la matricula actual
-    matricula.estado_matricula = params.estadoMatricula */
-
-
-
-
+// Estado de la matricula actual
+matricula.estado_matricula = params.estadoMatricula */
 
 module.exports = {
     prueba,

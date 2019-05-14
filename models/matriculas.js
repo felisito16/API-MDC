@@ -7,7 +7,7 @@ var matriculasSchema = Schema({
         nombre: String,
         primer_apellido: String,
         segundo_apellido: String
-    },
+    }/* ,
 
     fecha_nacimiento: {
         dia: Number,
@@ -124,7 +124,7 @@ var matriculasSchema = Schema({
         }
     },
 
-    estado_matricula: String // pendiente, erronea o tramite
+    estado_matricula: String // pendiente, erronea o tramite */
 
 });
 
