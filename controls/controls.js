@@ -98,13 +98,17 @@ function crearMatricula(req, res) {
 
     var params = req.body;
 
-    var nombre = params.nombre
-    var primerApellido = params.primerApellido
-    var segundoApellido = params.segundoApellido
+    // var nombre = params.nombre
+    // var primerApellido = params.primerApellido
+    // var segundoApellido = params.segundoApellido
 
-    matricula.nombre_completo.nombre = nombre
-    matricula.nombre_completo.primer_apellido = primerApellido
-    matricula.nombre_completo.segundo_apellido = segundoApellido
+    // matricula.nombre_completo.nombre = nombre
+    // matricula.nombre_completo.primer_apellido = primerApellido
+    // matricula.nombre_completo.segundo_apellido = segundoApellido
+
+    
+    // Familia profesional
+    matricula.familia_profesional = params.familiaProfesional
 
     matricula.save((err, matriculaStore) => {
         if (err) {
@@ -209,8 +213,7 @@ matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
 matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
 matricula.centro_inscripcion.codigo_centro = params.codigoCentro
 
-// Familia profesional
-matricula.familia_profesional = params.familiaProfesiona
+
 
 // Ciclo formativo
 matricula.ciclo_formativo.curso = params.cicloSeleccionado
