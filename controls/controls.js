@@ -124,6 +124,34 @@ function crearMatricula(req, res) {
         }
     })
 }
+
+function consultarMatricula(req, res) {
+    var params = req.params
+
+    if (params.id) {
+        var id = params.id
+
+        matricula.findOne({ "_id": { "$oid": id } }).exec(function (err, matricula) {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor"
+                })
+            } else {
+                if (matricula != 0) {
+                    res.status(200).send({
+                        matricula
+                    })
+                } else {
+                    res.status(200).send({
+                        message : "Matricula no encontrada"
+                    })
+                }
+            }
+        })
+    }
+
+
+}
 // Nombre completo
 /* params.nombre ? matricula.nombre_completo.nombre = params.nombre : ""
 params.primerApellido ? matricula.nombre_completo.primer_apellido = params.primerApellido : "";
@@ -271,7 +299,8 @@ module.exports = {
     saveUsuario,
     validarUsuario,
     validar,
-    crearMatricula
+    crearMatricula,
+    consultarMatricula
 }
 
 // Funciones ADICIONALES
