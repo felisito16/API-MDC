@@ -93,7 +93,7 @@ function validar(req, res) {
     })
 }
 
-function crearMatricula() {
+function crearMatricula(req, res) {
     var matricula = new Matricula();
 
     var params = req.body;
