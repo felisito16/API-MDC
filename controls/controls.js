@@ -131,7 +131,7 @@ function consultarMatricula(req, res) {
     if (params.id) {
         var id = params.id
 
-        matricula.findOne({ "_id": { "$oid": id } }).exec(function (err, matricula) {
+        Matricula.findOne({ "_id": { "$oid": id } }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor"
@@ -139,7 +139,7 @@ function consultarMatricula(req, res) {
             } else {
                 if (matricula != 0) {
                     res.status(200).send({
-                        matricula
+                        
                     })
                 } else {
                     res.status(200).send({
@@ -149,9 +149,8 @@ function consultarMatricula(req, res) {
             }
         })
     }
-
-
 }
+
 // Nombre completo
 /* params.nombre ? matricula.nombre_completo.nombre = params.nombre : ""
 params.primerApellido ? matricula.nombre_completo.primer_apellido = params.primerApellido : "";
