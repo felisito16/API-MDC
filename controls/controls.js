@@ -131,7 +131,7 @@ function consultarMatricula(req, res) {
     if (params.id) {
         var id = params.id
 
-        Matricula.find({ "_id.$oid": id } ).exec(function (err, matricula) {
+        Matricula.find({ "_id" : ObjectId(id) }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
