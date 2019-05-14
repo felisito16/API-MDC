@@ -2,7 +2,9 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
 var matriculasSchema = Schema({
-
+    _id: {
+        $oid: String
+    },
     nombre_completo: {
         nombre: String,
         primer_apellido: String,
