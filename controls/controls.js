@@ -143,7 +143,7 @@ function consultarMatricula(req, res) {
             } else {
                 if (matricula != 0) {
                     res.status(200).send({
-                        
+                        matricula : matricula
                     })
                 } else {
                     res.status(200).send({
