@@ -134,7 +134,8 @@ function consultarMatricula(req, res) {
         Matricula.findOne({ "_id": { "$oid": id } }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
-                    message: "Error en el servidor"
+                    message: "Error en el servidor",
+                    messageError : err
                 })
             } else {
                 if (matricula != 0) {
