@@ -135,7 +135,10 @@ function consultarMatricula(req, res) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
-                    messageError : err
+                    messageError : err,
+                    id : id,
+                    paramid : params.id,
+                    matricula : matricula
                 })
             } else {
                 if (matricula != 0) {
