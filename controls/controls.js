@@ -118,8 +118,7 @@ function crearMatricula() {
                 })
             } else {
                 res.status(200).send({
-                    message: "No se ha guardado la matricula",
-                    matriculaStore
+                    message: "No se ha guardado la matricula"
                 })
             }
         }
