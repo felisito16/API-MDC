@@ -101,13 +101,10 @@ function crearMatricula(req, res) {
     if (params.nombre && params.primerApellido && params.segundoApellido
         && params.fechaNacimiento) {
 
+        // Nombre Completo
         matricula.nombre_completo.nombre = params.nombre
         matricula.nombre_completo.primer_apellido = params.primerApellido
         matricula.nombre_completo.segundo_apellido = params.segundoApellido
-
-        /* matricula.fecha_nacimiento.dia = params.diaFechaNacimiento
-        matricula.fecha_nacimiento.mes = params.mesFechaNacimiento
-        matricula.fecha_nacimiento.anio = params.anioFechaNacimiento */
 
         // Fecha nacimiento
         var arrFechaNacimiento = params.fechaNacimiento.split("/")
@@ -115,8 +112,7 @@ function crearMatricula(req, res) {
         matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
         matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
 
-        // Familia profesional
-        /* matricula.familia_profesional = params.familiaProfesional */
+        // 
 
         matricula.save((err, matriculaStore) => {
             if (err) {
