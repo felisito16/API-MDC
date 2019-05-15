@@ -7,14 +7,14 @@ var matriculasSchema = Schema({
         nombre: String,
         primer_apellido: String,
         segundo_apellido: String
-    }/* ,
+    },
 
     fecha_nacimiento: {
         dia: Number,
         mes: Number,
         anio: Number
     },
-
+    /*
     dni: {
         numero: String,
         tipo_documentacion: String
@@ -124,7 +124,7 @@ var matriculasSchema = Schema({
         }
     },
 
-    estado_matricula: String // pendiente, erronea o tramite */
+    estado_matricula: String // POR DEFECTO (pendiente) pendiente, erronea o tramite */
 
 });
 

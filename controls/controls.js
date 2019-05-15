@@ -98,14 +98,13 @@ function crearMatricula(req, res) {
 
     var params = req.body;
 
-    var nombre = params.nombre
-    var primerApellido = params.primerApellido
-    var segundoApellido = params.segundoApellido
-
-    matricula.nombre_completo.nombre = nombre
-    matricula.nombre_completo.primer_apellido = primerApellido
-    matricula.nombre_completo.segundo_apellido = segundoApellido
-
+    matricula.nombre_completo.nombre = params.nombre
+    matricula.nombre_completo.primer_apellido = params.primerApellido
+    matricula.nombre_completo.segundo_apellido = params.segundoApellido
+    
+    matricula.fecha_nacimiento.dia = params.diaFechaNacimiento
+    matricula.fecha_nacimiento.mes = params.mesFechaNacimiento
+    matricula.fecha_nacimiento.anio = params.anioFechaNacimiento
 
     // Familia profesional
     /* matricula.familia_profesional = params.familiaProfesional */
@@ -168,7 +167,6 @@ function pendientesInicio(req, res) {
             res.status(500).send({
                 message: "Error en el servidor",
                 messageError: err,
-
             })
         } else {
             if (matriculas != 0) {
