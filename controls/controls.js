@@ -98,35 +98,45 @@ function crearMatricula(req, res) {
 
     var params = req.body;
 
-    matricula.nombre_completo.nombre = params.nombre
-    matricula.nombre_completo.primer_apellido = params.primerApellido
-    matricula.nombre_completo.segundo_apellido = params.segundoApellido
+    if(params.nombre && params.primerApellido && params.segundoApellido 
+        && params.diaFechaNacimiento && params.mesFechaNacimiento 
+        && params.anioFechaNacimiento) {
+        
+        matricula.nombre_completo.nombre = params.nombre
+        matricula.nombre_completo.primer_apellido = params.primerApellido
+        matricula.nombre_completo.segundo_apellido = params.segundoApellido
+        
+        matricula.fecha_nacimiento.dia = params.diaFechaNacimiento
+        matricula.fecha_nacimiento.mes = params.mesFechaNacimiento
+        matricula.fecha_nacimiento.anio = params.anioFechaNacimiento
     
-    matricula.fecha_nacimiento.dia = params.diaFechaNacimiento
-    matricula.fecha_nacimiento.mes = params.mesFechaNacimiento
-    matricula.fecha_nacimiento.anio = params.anioFechaNacimiento
-
-    // Familia profesional
-    /* matricula.familia_profesional = params.familiaProfesional */
-
-    matricula.save((err, matriculaStore) => {
-        if (err) {
-            res.status(500).send({
-                message: "Error en el servidor",
-                error : err
-            })
-        } else {
-            if (matriculaStore) {
-                res.status(200).send({
-                    matricula: matriculaStore
+        // Familia profesional
+        /* matricula.familia_profesional = params.familiaProfesional */
+    
+        matricula.save((err, matriculaStore) => {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor",
+                    error : err
                 })
             } else {
-                res.status(200).send({
-                    message: "No se ha guardado la matricula"
-                })
+                if (matriculaStore) {
+                    res.status(200).send({
+                        matricula: matriculaStore
+                    })
+                } else {
+                    res.status(200).send({
+                        message: "No se ha guardado la matricula"
+                    })
+                }
             }
-        }
-    })
+        })
+    } else {
+        res.status(200).send({
+            message: "Datos a introducir incorrectos o incompletos"
+        })
+    }
+
 }
 
 function consultarMatricula(req, res) {
