@@ -98,17 +98,17 @@ function crearMatricula(req, res) {
 
     var params = req.body;
 
-    // var nombre = params.nombre
-    // var primerApellido = params.primerApellido
-    // var segundoApellido = params.segundoApellido
-
-    // matricula.nombre_completo.nombre = nombre
-    // matricula.nombre_completo.primer_apellido = primerApellido
-    // matricula.nombre_completo.segundo_apellido = segundoApellido
-
+    var nombre = params.nombre
+    var primerApellido = params.primerApellido
+    var segundoApellido = params.segundoApellido
     
+    matricula.nombre_completo.nombre = nombre
+    matricula.nombre_completo.primer_apellido = primerApellido
+    matricula.nombre_completo.segundo_apellido = segundoApellido
+
+
     // Familia profesional
-    matricula.familia_profesional = params.familiaProfesional
+    /* matricula.familia_profesional = params.familiaProfesional */
 
     matricula.save((err, matriculaStore) => {
         if (err) {
@@ -135,15 +135,15 @@ function consultarMatricula(req, res) {
     if (params.id) {
         var id = params.id
         var mongoose = require("mongoose")
-        
-        Matricula.find({ "_id" : new mongoose.mongo.ObjectId(id) }).exec(function (err, matricula) {
+
+        Matricula.find({ "_id": new mongoose.mongo.ObjectId(id) }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
-                    messageError : err,
-                    id : id,
-                    paramid : params.id,
-                    matricula : matricula
+                    messageError: err,
+                    id: id,
+                    paramid: params.id,
+                    matricula: matricula
                 })
             } else {
                 if (matricula != 0) {
@@ -152,7 +152,61 @@ function consultarMatricula(req, res) {
                     })
                 } else {
                     res.status(200).send({
-                        message : "Matricula no encontrada"
+                        message: "Matricula no encontrada"
+                    })
+                }
+            }
+        })
+    }
+}
+
+function pendientesInicio(req, res) {
+
+    Matricula.find({}).limit(6).exec(function (err, matriculas) {
+        if (err) {
+            res.status(500).send({
+                message: "Error en el servidor",
+                messageError: err,
+
+            })
+        } else {
+            if (matriculas != 0) {
+                res.status(200).send({
+                    matriculas
+                })
+            } else {
+                res.status(200).send({
+                    message: "Matriculas no encontradas"
+                })
+            }
+        }
+    })
+}
+
+function erroneasInicio(req, res) {
+    var params = req.params
+
+    if (params.id) {
+        var id = params.id
+        var mongoose = require("mongoose")
+
+        Matricula.find({ "_id": new mongoose.mongo.ObjectId(id) }).exec(function (err, matricula) {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor",
+                    messageError: err,
+                    id: id,
+                    paramid: params.id,
+                    matricula: matricula
+                })
+            } else {
+                if (matricula != 0) {
+                    res.status(200).send({
+                        matricula
+                    })
+                } else {
+                    res.status(200).send({
+                        message: "Matricula no encontrada"
                     })
                 }
             }
@@ -307,7 +361,8 @@ module.exports = {
     validarUsuario,
     validar,
     crearMatricula,
-    consultarMatricula
+    consultarMatricula,
+    pendientesInicio
 }
 
 // Funciones ADICIONALES
