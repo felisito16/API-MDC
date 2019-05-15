@@ -58,11 +58,7 @@ var matriculasSchema = Schema({
     },
 
     // DATOS ACADEMICOS
-    via_acceso: {           
-        requisitos_academicos: String,
-        prueba_acceso: String,
-        sin_requisitos_academicos: String
-    },
+    via_acceso: String,
 
     //Fecha ==> Inscripcion || Nacimiento || Matriculacion anterior ???
     fecha_inscripcion: {

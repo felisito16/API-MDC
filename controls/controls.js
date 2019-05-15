@@ -144,7 +144,7 @@ function crearMatricula(req, res) {
         matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
         matricula.centro_inscripcion.codigo_centro = params.codigoCentro
 
-        // Familia Profesional
+        // Familia Profesional --> Se agregara automaticamente "Informatica" al hacer la matricula
         matricula.familia_profesional = params.familiaProfesional
 
         // Ciclo Formativo
@@ -156,17 +156,16 @@ function crearMatricula(req, res) {
 
 
         // Via acceso
-        matricula.via_acceso.requisitos_academicos = params.requisitosAcademicos
-        matricula.via_acceso.prueba_acceso = params.pruebaAcceso
-        matricula.via_acceso.sin_requisitos_academicos = params.sinRequisitosAcademicos
+        matricula.via_acceso = params.viaAcceso // --> Requisitos Academicos, Prueba de Acceso o Sin Requisitos Academicos
 
-        // Fecha Inscripcion
+
+        // Fecha Inscripcion --> Se agregara automaticamente al hacer la matricula
         var arrFechaInscripcion = params.fechaInscripcion.split("/") // 10/05/1994
         matricula.fecha_inscripcion.dia = parseInt(arrFechaInscripcion[0])
         matricula.fecha_inscripcion.mes = parseInt(arrFechaInscripcion[1])
         matricula.fecha_inscripcion.anio = parseInt(arrFechaInscripcion[2])
 
-        // Estado de la matricula actual
+        // Estado de la matricula actual --> Se agregara automaticamente al hacer la matricula
         matricula.estado_matricula = params.estadoMatricula
 
 
