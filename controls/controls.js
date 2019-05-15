@@ -134,7 +134,8 @@ function consultarMatricula(req, res) {
 
     if (params.id) {
         var id = params.id
-
+        var mongoose = require("mongoose")
+        
         Matricula.find({ "_id" : new mongoose.mongo.ObjectId(id) }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
