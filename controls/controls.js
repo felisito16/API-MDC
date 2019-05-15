@@ -100,15 +100,17 @@ function crearMatricula(req, res) {
 
     if (params.nombre && params.primerApellido && params.segundoApellido
         && params.fechaNacimiento && (params.gradoMedio || params.gradoSuperior)
-        && params.ciclo && params.curso) {
+        && params.ciclo && params.curso && params.numDNI && params.tipo_documentacion
+        && params.telefono && params.nacionalidad && params.calleDom && params.numeroDom
+        && params.provincia && params.nombreLocalidad && params.cpLocalidad) {
 
         // Nombre Completo
-        matricula.nombre_completo.nombre = params.nombre
-        matricula.nombre_completo.primer_apellido = params.primerApellido
-        matricula.nombre_completo.segundo_apellido = params.segundoApellido
+        matricula.nombre_completo.nombre = params.nombre // Felix   
+        matricula.nombre_completo.primer_apellido = params.primerApellido // Barriga
+        matricula.nombre_completo.segundo_apellido = params.segundoApellido // Gamarro
 
         // Fecha nacimiento
-        var arrFechaNacimiento = params.fechaNacimiento.split("/")
+        var arrFechaNacimiento = params.fechaNacimiento.split("/") // 10/05/1994
         matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
         matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
         matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
@@ -119,6 +121,27 @@ function crearMatricula(req, res) {
         params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
             matricula.ciclo_formativo.grado.medio = params.gradoMedio
             : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
+
+        // DNI
+        matricula.dni.numero = params.numDNI //29503109
+        matricula.dni.tipo_documentacion = params.tipo_documentacion // Pasaporte, DNI
+
+        // Telefono
+        matricula.telefono = params.telefono // 954123456 o el movil 689123456
+
+        // Nacionalidad
+        matricula.nacionalidad = params.nacionalidad // España, Francia
+
+        // Domicilio
+        matricula.domicilio.calle = params.calleDom // Calle Alcala del Rio
+        matricula.domicilio.numero = params.numeroDom // Nº1 2ºC
+
+        // Provincia
+        matricula.provincia = params.provincia // Sevilla, Huelva, Zaragoza
+
+        // Localidad
+        matricula.localidad.nombre = params.nombreLocalidad // Sevilla, Dos hermanas
+        matricula.localidad.codigo_postal = params.cpLocalidad // 41015
 
         matricula.save((err, matriculaStore) => {
             if (err) {

@@ -14,7 +14,7 @@ var matriculasSchema = Schema({
         mes: Number,
         anio: Number
     },
-    /*
+
     dni: {
         numero: String,
         tipo_documentacion: String
@@ -22,18 +22,19 @@ var matriculasSchema = Schema({
 
     telefono: String,
     nacionalidad: String,
-
+    
     domicilio: {
         calle: String,
         numero: Number
     },
-
+    
     provincia: String,
-
+    
     localidad: {
         nombre: String,
         codigo_postal: Number
     },
+    /*
 
     foto_dni_pasaporte: String,
     foto_seguridad_social: String,
