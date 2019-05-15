@@ -99,8 +99,7 @@ function crearMatricula(req, res) {
     var params = req.body;
 
     if (params.nombre && params.primerApellido && params.segundoApellido
-        && params.diaFechaNacimiento && params.mesFechaNacimiento
-        && params.anioFechaNacimiento) {
+        && params.fechaNacimiento) {
 
         matricula.nombre_completo.nombre = params.nombre
         matricula.nombre_completo.primer_apellido = params.primerApellido
