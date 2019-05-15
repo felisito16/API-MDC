@@ -53,15 +53,16 @@ var matriculasSchema = Schema({
     },
 
     familia_profesional: String,
-
+    */
     ciclo_formativo: {
+        ciclo: String,
         curso: String,
         grado: {
-            medio: String,
-            superior: String
+            medio: Boolean,
+            superior: Boolean
         }
     },
-
+    /*
     modulos_profesionales: String,
 
     //Fecha ==> Inscripcion || Nacimiento || Matriculacion anterior ???

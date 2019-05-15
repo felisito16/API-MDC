@@ -99,7 +99,8 @@ function crearMatricula(req, res) {
     var params = req.body;
 
     if (params.nombre && params.primerApellido && params.segundoApellido
-        && params.fechaNacimiento) {
+        && params.fechaNacimiento && (params.gradoMedio || params.gradoSuperior)
+        && params.ciclo && params.curso) {
 
         // Nombre Completo
         matricula.nombre_completo.nombre = params.nombre
@@ -112,7 +113,12 @@ function crearMatricula(req, res) {
         matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
         matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
 
-        // 
+        // Ciclo Formativo
+        matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
+        matricula.ciclo_formativo.curso = params.curso // Año curso
+        params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
+            matricula.ciclo_formativo.grado.medio = params.gradoMedio
+            : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
 
         matricula.save((err, matriculaStore) => {
             if (err) {
