@@ -36,12 +36,13 @@ var matriculasSchema = Schema({
     },
     /*
 
-    foto_dni_pasaporte: String,
-    foto_seguridad_social: String,
-    foto_usuario: String,
-    email: String,
+    foto_dni_pasaporte: String,    // DOCUMENTACION
+    foto_seguridad_social: String, // DOCUMENTACION
+    foto_usuario: String,          // DOCUMENTACION 
+    email: String,                 // DATOS PERSONALES 
 
-    via_acceso: {
+    // DATOS ACADEMICOS
+    via_acceso: {           
         requisitos_academicos: String,
         prueba_acceso: String,
         sin_requisitos_academicos: String
@@ -58,13 +59,15 @@ var matriculasSchema = Schema({
     ciclo_formativo: {
         ciclo: String,
         curso: String,
-        grado: {
+        
+        /* NO USAR grado: {
             medio: Boolean,
-            superior: Boolean
-        }
+            superior: Boolean // DEFECTO
+        } NO USAR */
+
     },
     /*
-    modulos_profesionales: String,
+    modulos_profesionales: String, // DOCUMENTACION
 
     //Fecha ==> Inscripcion || Nacimiento || Matriculacion anterior ???
     fecha_inscripcion: {
@@ -73,48 +76,48 @@ var matriculasSchema = Schema({
         anio: Number,
     },
 
-    firma_interesado: String,
-    observaciones: String,
-    sello_centro: String,
-    anio_escolar: Number,
+    firma_interesado: String, // DOCUMENTACION
+    observaciones: String,    // DOCUMENTACION
+    sello_centro: String,     // DOCUMENTACION
+    anio_escolar: Number,     
 
-    acceso_requisitos_academicos: {
-        certificado_bachillerato: String,
-        certificado_grado_medio: String,
-        certificado_prueba_acceso: String,
-        fotocopia_certificado: String
+    acceso_requisitos_academicos: {         // DOCUMENTACION
+        certificado_bachillerato: String,   // DOCUMENTACION
+        certificado_grado_medio: String,    // DOCUMENTACION
+        certificado_prueba_acceso: String,  // DOCUMENTACION
+        fotocopia_certificado: String       // DOCUMENTACION
     },
 
     acceso_sin_requisitos: {
-        certificado_experiencia_laboral: String
+        certificado_experiencia_laboral: String     // DOCUMENTACION
     },
 
-    abono_banco: Number,
-    repetidor_cursos: String, //True o false?
+    abono_banco: Number,                            // FORMAS DE PAGO
+    repetidor_cursos: String, //True o false?       // FORMAS DE PAGO
 
-    titular_cuenta: String,
-    domicilio_cuenta: String,
-    banco_cuenta: String,
+    titular_cuenta: String,                         // FORMAS DE PAGO
+    domicilio_cuenta: String,                       // FORMAS DE PAGO
+    banco_cuenta: String,                           // FORMAS DE PAGO
 
-    cuenta_bancaria: {
-        iban: String,
-        banco: String,
-        sucursal: Number,
-        d_c: Number,
-        c_c: Number
+    cuenta_bancaria: {                              // FORMAS DE PAGO
+        iban: String,                               // FORMAS DE PAGO
+        banco: String,                              // FORMAS DE PAGO
+        sucursal: Number,                           // FORMAS DE PAGO
+        d_c: Number,                                // FORMAS DE PAGO
+        c_c: Number                                 // FORMAS DE PAGO
     },
 
-    firma_titular: String,
-    dni_titular: String,
-    codigo_postal_titular: String,
-    telefono_titular: String,
+    firma_titular: String,                          // FORMAS DE PAGO
+    dni_titular: String,                            // FORMAS DE PAGO
+    codigo_postal_titular: String,                  // FORMAS DE PAGO
+    telefono_titular: String,                       // FORMAS DE PAGO
 
-    pagos_realizados: Number,
+    pagos_realizados: Number,                       // FORMAS DE PAGO
 
     tipo_pago: {
-        metalico: String,
-        transferencia: Number,
-        domiciliacion_bancaria: Number
+        metalico: String,                           // FORMAS DE PAGO
+        transferencia: Number,                      // FORMAS DE PAGO
+        domiciliacion_bancaria: Number              // FORMAS DE PAGO
     },
 
     gestion_matricula: {
