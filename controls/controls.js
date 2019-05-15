@@ -115,16 +115,9 @@ function crearMatricula(req, res) {
         matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
         matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
 
-        // Ciclo Formativo
-        matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
-        matricula.ciclo_formativo.curso = params.curso // Año curso
-        params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
-            matricula.ciclo_formativo.grado.medio = params.gradoMedio
-            : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
-
         // DNI
         matricula.dni.numero = params.numDNI //29503109
-        matricula.dni.tipo_documentacion = params.tipo_documentacion // Pasaporte, DNI
+        matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
 
         // Telefono
         matricula.telefono = params.telefono // 954123456 o el movil 689123456
@@ -142,6 +135,40 @@ function crearMatricula(req, res) {
         // Localidad
         matricula.localidad.nombre = params.nombreLocalidad // Sevilla, Dos hermanas
         matricula.localidad.codigo_postal = params.cpLocalidad // 41015
+
+        // Email
+        matricula.email = params.email
+
+        // Centro de inscripcion
+        matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
+        matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
+        matricula.centro_inscripcion.codigo_centro = params.codigoCentro
+
+        // Familia Profesional
+        matricula.familia_profesional = params.familiaProfesional
+
+        // Ciclo Formativo
+        matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
+        matricula.ciclo_formativo.curso = params.curso // Año curso
+        params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
+            matricula.ciclo_formativo.grado.medio = params.gradoMedio
+            : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
+
+
+        // Via acceso
+        matricula.via_acceso.requisitos_academicos = params.requisitosAcademicos
+        matricula.via_acceso.prueba_acceso = params.pruebaAcceso
+        matricula.via_acceso.sin_requisitos_academicos = params.sinRequisitosAcademicos
+
+        // Fecha Inscripcion
+        var arrFechaInscripcion = params.fechaInscripcion.split("/") // 10/05/1994
+        matricula.fecha_inscripcion.dia = parseInt(arrFechaInscripcion[0])
+        matricula.fecha_inscripcion.mes = parseInt(arrFechaInscripcion[1])
+        matricula.fecha_inscripcion.anio = parseInt(arrFechaInscripcion[2])
+
+        // Estado de la matricula actual
+        matricula.estado_matricula = params.estadoMatricula
+
 
         matricula.save((err, matriculaStore) => {
             if (err) {

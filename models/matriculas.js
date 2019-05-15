@@ -21,6 +21,7 @@ var matriculasSchema = Schema({
     },
 
     telefono: String,
+    
     nacionalidad: String,
     
     domicilio: {
@@ -34,20 +35,9 @@ var matriculasSchema = Schema({
         nombre: String,
         codigo_postal: Number
     },
-    /*
-
-    foto_dni_pasaporte: String,    // DOCUMENTACION
-    foto_seguridad_social: String, // DOCUMENTACION
-    foto_usuario: String,          // DOCUMENTACION 
+    
     email: String,                 // DATOS PERSONALES 
-
-    // DATOS ACADEMICOS
-    via_acceso: {           
-        requisitos_academicos: String,
-        prueba_acceso: String,
-        sin_requisitos_academicos: String
-    },
-
+    
     centro_inscripcion: {
         nombre_centro: String,
         localidad_centro: String,
@@ -55,7 +45,7 @@ var matriculasSchema = Schema({
     },
 
     familia_profesional: String,
-    */
+    
     ciclo_formativo: {
         ciclo: String,
         curso: String,
@@ -66,8 +56,13 @@ var matriculasSchema = Schema({
         } NO USAR */
 
     },
-    /*
-    modulos_profesionales: String, // DOCUMENTACION
+
+    // DATOS ACADEMICOS
+    via_acceso: {           
+        requisitos_academicos: String,
+        prueba_acceso: String,
+        sin_requisitos_academicos: String
+    },
 
     //Fecha ==> Inscripcion || Nacimiento || Matriculacion anterior ???
     fecha_inscripcion: {
@@ -75,6 +70,16 @@ var matriculasSchema = Schema({
         mes: Number,
         anio: Number,
     },
+
+    estado_matricula: String // POR DEFECTO (pendiente) pendiente, erronea o tramite 
+
+    /*
+
+    foto_dni_pasaporte: String,    // DOCUMENTACION
+    foto_seguridad_social: String, // DOCUMENTACION
+    foto_usuario: String,          // DOCUMENTACION 
+
+    modulos_profesionales: String, // DOCUMENTACION
 
     firma_interesado: String, // DOCUMENTACION
     observaciones: String,    // DOCUMENTACION
@@ -120,7 +125,7 @@ var matriculasSchema = Schema({
         domiciliacion_bancaria: Number              // FORMAS DE PAGO
     },
 
-    gestion_matricula: {
+    gestion_matricula: {                            // NO HACER NADA
         usuario: String,
         fecha_gestion: {
             dia: Number,
@@ -129,7 +134,8 @@ var matriculasSchema = Schema({
         }
     },
 
-    estado_matricula: String // POR DEFECTO (pendiente) pendiente, erronea o tramite */
+    */
+
 
 });
 
