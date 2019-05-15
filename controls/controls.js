@@ -101,7 +101,7 @@ function crearMatricula(req, res) {
     var nombre = params.nombre
     var primerApellido = params.primerApellido
     var segundoApellido = params.segundoApellido
-    
+
     matricula.nombre_completo.nombre = nombre
     matricula.nombre_completo.primer_apellido = primerApellido
     matricula.nombre_completo.segundo_apellido = segundoApellido
@@ -113,7 +113,8 @@ function crearMatricula(req, res) {
     matricula.save((err, matriculaStore) => {
         if (err) {
             res.status(500).send({
-                message: "Error en el servidor"
+                message: "Error en el servidor",
+                error : err
             })
         } else {
             if (matriculaStore) {
