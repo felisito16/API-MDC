@@ -12,9 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // configurar CORSE
-app.use(cors({
-    origin: 'https://felisito16.github.io'
-}));
+app.use(cors());
 
 // rutas
 app.use("/", controls_router)
