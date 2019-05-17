@@ -99,74 +99,76 @@ function crearMatricula(req, res) {
     var params = req.body;
 
     if (params.nombre && params.primerApellido && params.segundoApellido
-        && params.fechaNacimiento && (params.gradoMedio || params.gradoSuperior)
-        && params.ciclo && params.curso && params.numDNI && params.tipo_documentacion
-        && params.telefono && params.nacionalidad && params.calleDom && params.numeroDom
-        && params.provincia && params.nombreLocalidad && params.cpLocalidad) {
+        // && params.fechaNacimiento && (params.gradoMedio || params.gradoSuperior)
+        // && params.ciclo && params.curso && params.numDNI && params.tipo_documentacion
+        // && params.telefono && params.nacionalidad && params.calleDom && params.numeroDom
+        // && params.provincia && params.nombreLocalidad && params.cpLocalidad
+        
+        ) {
 
         // Nombre Completo
         matricula.nombre_completo.nombre = params.nombre // Felix   
         matricula.nombre_completo.primer_apellido = params.primerApellido // Barriga
         matricula.nombre_completo.segundo_apellido = params.segundoApellido // Gamarro
 
-        // Fecha nacimiento
-        var arrFechaNacimiento = params.fechaNacimiento.split("/") // 10/05/1994
-        matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
-        matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
-        matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
+        // // Fecha nacimiento
+        // var arrFechaNacimiento = params.fechaNacimiento.split("/") // 10/05/1994
+        // matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
+        // matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
+        // matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
 
-        // DNI
-        matricula.dni.numero = params.numDNI //29503109
-        matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
+        // // DNI
+        // matricula.dni.numero = params.numDNI //29503109
+        // matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
 
-        // Telefono
-        matricula.telefono = params.telefono // 954123456 o el movil 689123456
+        // // Telefono
+        // matricula.telefono = params.telefono // 954123456 o el movil 689123456
 
-        // Nacionalidad
-        matricula.nacionalidad = params.nacionalidad // España, Francia
+        // // Nacionalidad
+        // matricula.nacionalidad = params.nacionalidad // España, Francia
 
-        // Domicilio
-        matricula.domicilio.calle = params.calleDom // Calle Alcala del Rio
-        matricula.domicilio.numero = params.numeroDom // Nº1 2ºC
+        // // Domicilio
+        // matricula.domicilio.calle = params.calleDom // Calle Alcala del Rio
+        // matricula.domicilio.numero = params.numeroDom // Nº1 2ºC
 
-        // Provincia
-        matricula.provincia = params.provincia // Sevilla, Huelva, Zaragoza
+        // // Provincia
+        // matricula.provincia = params.provincia // Sevilla, Huelva, Zaragoza
 
-        // Localidad
-        matricula.localidad.nombre = params.nombreLocalidad // Sevilla, Dos hermanas
-        matricula.localidad.codigo_postal = params.cpLocalidad // 41015
+        // // Localidad
+        // matricula.localidad.nombre = params.nombreLocalidad // Sevilla, Dos hermanas
+        // matricula.localidad.codigo_postal = params.cpLocalidad // 41015
 
-        // Email
-        matricula.email = params.email
+        // // Email
+        // matricula.email = params.email
 
-        // Centro de inscripcion
-        matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
-        matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
-        matricula.centro_inscripcion.codigo_centro = params.codigoCentro
+        // // Centro de inscripcion
+        // matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
+        // matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
+        // matricula.centro_inscripcion.codigo_centro = params.codigoCentro
 
-        // Familia Profesional --> Se agregara automaticamente "Informatica" al hacer la matricula
-        matricula.familia_profesional = params.familiaProfesional
+        // // Familia Profesional --> Se agregara automaticamente "Informatica" al hacer la matricula
+        // matricula.familia_profesional = params.familiaProfesional
 
-        // Ciclo Formativo
-        matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
-        matricula.ciclo_formativo.curso = params.curso // Año curso
-        params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
-            matricula.ciclo_formativo.grado.medio = params.gradoMedio
-            : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
-
-
-        // Via acceso
-        matricula.via_acceso = params.viaAcceso // --> Requisitos Academicos, Prueba de Acceso o Sin Requisitos Academicos
+        // // Ciclo Formativo
+        // matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
+        // matricula.ciclo_formativo.curso = params.curso // Año curso
+        // params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
+        //     matricula.ciclo_formativo.grado.medio = params.gradoMedio
+        //     : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
 
 
-        // Fecha Inscripcion --> Se agregara automaticamente al hacer la matricula
-        var arrFechaInscripcion = params.fechaInscripcion.split("/") // 10/05/1994
-        matricula.fecha_inscripcion.dia = parseInt(arrFechaInscripcion[0])
-        matricula.fecha_inscripcion.mes = parseInt(arrFechaInscripcion[1])
-        matricula.fecha_inscripcion.anio = parseInt(arrFechaInscripcion[2])
+        // // Via acceso
+        // matricula.via_acceso = params.viaAcceso // --> Requisitos Academicos, Prueba de Acceso o Sin Requisitos Academicos
 
-        // Estado de la matricula actual --> Se agregara automaticamente al hacer la matricula
-        matricula.estado_matricula = params.estadoMatricula
+
+        // // Fecha Inscripcion --> Se agregara automaticamente al hacer la matricula
+        // var arrFechaInscripcion = params.fechaInscripcion.split("/") // 10/05/1994
+        // matricula.fecha_inscripcion.dia = parseInt(arrFechaInscripcion[0])
+        // matricula.fecha_inscripcion.mes = parseInt(arrFechaInscripcion[1])
+        // matricula.fecha_inscripcion.anio = parseInt(arrFechaInscripcion[2])
+
+        // // Estado de la matricula actual --> Se agregara automaticamente al hacer la matricula
+        // matricula.estado_matricula = params.estadoMatricula
 
 
         matricula.save((err, matriculaStore) => {
