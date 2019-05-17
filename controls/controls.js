@@ -105,21 +105,21 @@ function crearMatricula(req, res) {
         && params.curso 
         && params.numDNI 
         && params.tipoDocumentacion
-        // && params.telefono 
-        // && params.nacionalidad 
-        // && params.calleDom 
-        // && params.numeroDom
-        // && params.provincia 
-        // && params.nombreLocalidad 
-        // && params.cpLocalidad
-        // && params.email
-        // && params.nombreCentroInscripcion
-        // && params.localidadCentroInscripcion
-        // && params.codigoCentro
-        // && params.familiaProfesional
-        // && params.viaAcceso
-        // && params.fechaInscripcion
-        // && params.estadoMatricula
+        && params.telefono 
+        && params.nacionalidad 
+        && params.calleDom 
+        && params.numeroDom
+        && params.provincia 
+        && params.nombreLocalidad 
+        && params.cpLocalidad
+        && params.email
+        && params.nombreCentroInscripcion
+        && params.localidadCentroInscripcion
+        && params.codigoCentro
+        && params.familiaProfesional
+        && params.viaAcceso
+        && params.fechaInscripcion
+        && params.estadoMatricula
         
         ) {
 
@@ -138,31 +138,33 @@ function crearMatricula(req, res) {
         matricula.dni.numero = params.numDNI //29503109
         matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
 
-        // // Telefono
-        // matricula.telefono = params.telefono // 954123456 o el movil 689123456
+        // Telefono
+        matricula.telefono = params.telefono // 954123456 o el movil 689123456
 
-        // // Nacionalidad
-        // matricula.nacionalidad = params.nacionalidad // España, 
-        // // Domicilio
-        // matricula.domicilio.calle = params.calleDom // Calle Alcala del Rio
-        // matricula.domicilio.numero = params.numeroDom // Nº1 2ºC
+        // Nacionalidad
+        matricula.nacionalidad = params.nacionalidad // España, 
 
-        // // Provincia
-        // matricula.provincia = params.provincia // Sevilla, Huelva, 
-        // // Localidad
-        // matricula.localidad.nombre = params.nombreLocalidad // Sevilla, Dos hermanas
-        // matricula.localidad.codigo_postal = params.cpLocalidad // 41015
+        // Domicilio
+        matricula.domicilio.calle = params.calleDom // Calle Alcala del Rio
+        matricula.domicilio.numero = params.numeroDom // Nº1 2ºC
 
-        // // Email
-        // matricula.email = params.email
+        // Provincia
+        matricula.provincia = params.provincia // Sevilla, Huelva,
 
-        // // Centro de inscripcion
-        // matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
-        // matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
-        // matricula.centro_inscripcion.codigo_centro = params.codigoCentro
+        // Localidad
+        matricula.localidad.nombre = params.nombreLocalidad // Sevilla, Dos hermanas
+        matricula.localidad.codigo_postal = params.cpLocalidad // 41015
 
-        // // Familia Profesional --> Se agregara automaticamente "Informatica" al hacer la matricula
-        // matricula.familia_profesional = params.familiaProfesional
+        // Email
+        matricula.email = params.email
+
+        // Centro de inscripcion
+        matricula.centro_inscripcion.nombre_centro = params.nombreCentroInscripcion
+        matricula.centro_inscripcion.localidad_centro = params.localidadCentroInscripcion
+        matricula.centro_inscripcion.codigo_centro = params.codigoCentro
+
+        // Familia Profesional --> Se agregara automaticamente "Informatica" al hacer la matricula
+        matricula.familia_profesional = params.familiaProfesional
 
         // Ciclo Formativo
         matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
@@ -172,18 +174,18 @@ function crearMatricula(req, res) {
         //      : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
 
 
-        // // Via acceso
-        // matricula.via_acceso = params.viaAcceso // --> Requisitos Academicos, Prueba de Acceso o Sin Requisitos Academicos
+        // Via acceso
+        matricula.via_acceso = params.viaAcceso // --> Requisitos Academicos, Prueba de Acceso o Sin Requisitos Academicos
 
 
-        // // Fecha Inscripcion --> Se agregara automaticamente al hacer la matricula
-        // var arrFechaInscripcion = params.fechaInscripcion.split("/") // 10/05/1994
-        // matricula.fecha_inscripcion.dia = parseInt(arrFechaInscripcion[0])
-        // matricula.fecha_inscripcion.mes = parseInt(arrFechaInscripcion[1])
-        // matricula.fecha_inscripcion.anio = parseInt(arrFechaInscripcion[2])
+        // Fecha Inscripcion --> Se agregara automaticamente al hacer la matricula
+        var arrFechaInscripcion = params.fechaInscripcion.split("/") // 10/05/1994
+        matricula.fecha_inscripcion.dia = parseInt(arrFechaInscripcion[0])
+        matricula.fecha_inscripcion.mes = parseInt(arrFechaInscripcion[1])
+        matricula.fecha_inscripcion.anio = parseInt(arrFechaInscripcion[2])
 
-        // // Estado de la matricula actual --> Se agregara automaticamente al hacer la matricula
-        // matricula.estado_matricula = params.estadoMatricula
+        // Estado de la matricula actual --> Se agregara automaticamente al hacer la matricula
+        matricula.estado_matricula = params.estadoMatricula
 
 
         matricula.save((err, matriculaStore) => {
