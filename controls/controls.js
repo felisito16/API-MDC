@@ -99,10 +99,18 @@ function crearMatricula(req, res) {
     var params = req.body;
 
     if (params.nombre && params.primerApellido && params.segundoApellido
-        // && params.fechaNacimiento && (params.gradoMedio || params.gradoSuperior)
-        // && params.ciclo && params.curso && params.numDNI && params.tipo_documentacion
-        // && params.telefono && params.nacionalidad && params.calleDom && params.numeroDom
-        // && params.provincia && params.nombreLocalidad && params.cpLocalidad
+        // && params.fechaNacimiento 
+        // && (params.gradoMedio || params.gradoSuperior)
+         && params.ciclo 
+        // && params.curso 
+        // && params.numDNI 
+        // && params.tipo_documentacion
+        // && params.telefono 
+        // && params.nacionalidad 
+        // && params.calleDom && params.numeroDom
+        // && params.provincia 
+        // && params.nombreLocalidad 
+        // && params.cpLocalidad
         
         ) {
 
@@ -149,12 +157,12 @@ function crearMatricula(req, res) {
         // // Familia Profesional --> Se agregara automaticamente "Informatica" al hacer la matricula
         // matricula.familia_profesional = params.familiaProfesional
 
-        // // Ciclo Formativo
-        // matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
-        // matricula.ciclo_formativo.curso = params.curso // Año curso
-        // params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
-        //     matricula.ciclo_formativo.grado.medio = params.gradoMedio
-        //     : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
+        // Ciclo Formativo
+         matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
+        //  matricula.ciclo_formativo.curso = params.curso // Año curso
+        //  params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
+        //      matricula.ciclo_formativo.grado.medio = params.gradoMedio
+        //      : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
 
 
         // // Via acceso
