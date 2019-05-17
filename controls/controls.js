@@ -99,29 +99,12 @@ function crearMatricula(req, res) {
     var params = req.body;
 
     if (params.nombre && params.primerApellido && params.segundoApellido
-        && params.fechaNacimiento 
-        && (params.gradoMedio || params.gradoSuperior)
-        && params.ciclo 
-        && params.curso 
-        && params.numDNI 
-        && params.tipoDocumentacion
-        && params.telefono 
-        && params.nacionalidad 
-        && params.calleDom 
-        && params.numeroDom
-        && params.provincia 
-        && params.nombreLocalidad 
-        && params.cpLocalidad
-        && params.email
-        && params.nombreCentroInscripcion
-        && params.localidadCentroInscripcion
-        && params.codigoCentro
-        && params.familiaProfesional
-        && params.viaAcceso
-        && params.fechaInscripcion
-        && params.estadoMatricula
-        
-        ) {
+        && params.fechaNacimiento && (params.gradoMedio || params.gradoSuperior)
+        && params.ciclo && params.curso && params.numDNI && params.tipoDocumentacion
+        && params.telefono && params.nacionalidad && params.calleDom && params.numeroDom
+        && params.provincia && params.nombreLocalidad && params.cpLocalidad && params.email
+        && params.nombreCentroInscripcion && params.localidadCentroInscripcion && params.codigoCentro
+        && params.familiaProfesional && params.viaAcceso && params.fechaInscripcion && params.estadoMatricula) {
 
         // Nombre Completo
         matricula.nombre_completo.nombre = params.nombre // Felix   
