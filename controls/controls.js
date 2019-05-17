@@ -99,7 +99,7 @@ function crearMatricula(req, res) {
     var params = req.body;
 
     if (params.nombre && params.primerApellido && params.segundoApellido
-        // && params.fechaNacimiento 
+        && params.fechaNacimiento 
         // && (params.gradoMedio || params.gradoSuperior)
         && params.ciclo 
         && params.curso 
@@ -119,11 +119,11 @@ function crearMatricula(req, res) {
         matricula.nombre_completo.primer_apellido = params.primerApellido // Barriga
         matricula.nombre_completo.segundo_apellido = params.segundoApellido // Gamarro
 
-        // // Fecha nacimiento
-        // var arrFechaNacimiento = params.fechaNacimiento.split("/") // 10/05/1994
-        // matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
-        // matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
-        // matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
+        // Fecha nacimiento
+        var arrFechaNacimiento = params.fechaNacimiento.split("/") // 10/05/1994
+        matricula.fecha_nacimiento.dia = parseInt(arrFechaNacimiento[0])
+        matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
+        matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
 
         // DNI
         matricula.dni.numero = params.numDNI //29503109
