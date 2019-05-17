@@ -103,7 +103,7 @@ function crearMatricula(req, res) {
         // && (params.gradoMedio || params.gradoSuperior)
         && params.ciclo 
         && params.curso 
-        // && params.numDNI 
+        && params.numDNI 
         // && params.tipo_documentacion
         // && params.telefono 
         // && params.nacionalidad 
@@ -125,8 +125,8 @@ function crearMatricula(req, res) {
         // matricula.fecha_nacimiento.mes = parseInt(arrFechaNacimiento[1])
         // matricula.fecha_nacimiento.anio = parseInt(arrFechaNacimiento[2])
 
-        // // DNI
-        // matricula.dni.numero = params.numDNI //29503109
+        // DNI
+        matricula.dni.numero = params.numDNI //29503109
         // matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
 
         // // Telefono
