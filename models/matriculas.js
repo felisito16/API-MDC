@@ -50,10 +50,10 @@ var matriculasSchema = Schema({
         ciclo: String,
         curso: String,
         
-        /* NO USAR grado: {
+        grado: {
             medio: Boolean,
             superior: Boolean // DEFECTO
-        } NO USAR */
+        }
 
     },
 
