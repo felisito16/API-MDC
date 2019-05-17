@@ -101,8 +101,8 @@ function crearMatricula(req, res) {
     if (params.nombre && params.primerApellido && params.segundoApellido
         // && params.fechaNacimiento 
         // && (params.gradoMedio || params.gradoSuperior)
-         && params.ciclo 
-        // && params.curso 
+        && params.ciclo 
+        && params.curso 
         // && params.numDNI 
         // && params.tipo_documentacion
         // && params.telefono 
@@ -158,8 +158,8 @@ function crearMatricula(req, res) {
         // matricula.familia_profesional = params.familiaProfesional
 
         // Ciclo Formativo
-         matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
-        //  matricula.ciclo_formativo.curso = params.curso // Año curso
+        matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
+        matricula.ciclo_formativo.curso = params.curso // Año curso
         //  params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
         //      matricula.ciclo_formativo.grado.medio = params.gradoMedio
         //      : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
