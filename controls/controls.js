@@ -127,7 +127,7 @@ function crearMatricula(req, res) {
 
         // DNI
         matricula.dni.numero = params.numDNI //29503109
-        // matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
+        matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
 
         // // Telefono
         // matricula.telefono = params.telefono // 954123456 o el movil 689123456
