@@ -104,7 +104,7 @@ function crearMatricula(req, res) {
         && params.ciclo 
         && params.curso 
         && params.numDNI 
-        && params.tipo_documentacion
+        && params.tipoDocumentacion
         // && params.telefono 
         // && params.nacionalidad 
         // && params.calleDom 
