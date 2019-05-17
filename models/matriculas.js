@@ -26,14 +26,14 @@ var matriculasSchema = Schema({
     
     domicilio: {
         calle: String,
-        numero: Number
+        numero: String //Number
     },
     
     provincia: String,
     
     localidad: {
         nombre: String,
-        codigo_postal: Number
+        codigo_postal: String //Number
     },
     
     email: String,                 // DATOS PERSONALES 
