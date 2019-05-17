@@ -105,8 +105,8 @@ function crearMatricula(req, res) {
         && params.curso 
         && params.numDNI 
         && params.tipo_documentacion
-        && params.telefono 
-        && params.nacionalidad 
+        // && params.telefono 
+        // && params.nacionalidad 
         // && params.calleDom 
         // && params.numeroDom
         // && params.provincia 
@@ -138,11 +138,11 @@ function crearMatricula(req, res) {
         matricula.dni.numero = params.numDNI //29503109
         matricula.dni.tipo_documentacion = params.tipoDocumentacion // Pasaporte, DNI
 
-        // Telefono
-        matricula.telefono = params.telefono // 954123456 o el movil 689123456
+        // // Telefono
+        // matricula.telefono = params.telefono // 954123456 o el movil 689123456
 
-        // Nacionalidad
-        matricula.nacionalidad = params.nacionalidad // España, 
+        // // Nacionalidad
+        // matricula.nacionalidad = params.nacionalidad // España, 
         // // Domicilio
         // matricula.domicilio.calle = params.calleDom // Calle Alcala del Rio
         // matricula.domicilio.numero = params.numeroDom // Nº1 2ºC
