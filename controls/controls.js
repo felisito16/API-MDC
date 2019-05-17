@@ -107,7 +107,8 @@ function crearMatricula(req, res) {
         && params.tipo_documentacion
         && params.telefono 
         && params.nacionalidad 
-        && params.calleDom && params.numeroDom
+        && params.calleDom 
+        && params.numeroDom
         && params.provincia 
         && params.nombreLocalidad 
         && params.cpLocalidad
@@ -116,6 +117,7 @@ function crearMatricula(req, res) {
         && params.localidadCentroInscripcion
         && params.codigoCentro
         && params.familiaProfesional
+        && params.viaAcceso
         && params.fechaInscripcion
         && params.estadoMatricula
         
