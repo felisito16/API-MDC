@@ -100,7 +100,7 @@ function crearMatricula(req, res) {
 
     if (params.nombre && params.primerApellido && params.segundoApellido
         && params.fechaNacimiento 
-        // && (params.gradoMedio || params.gradoSuperior)
+        && (params.gradoMedio || params.gradoSuperior)
         && params.ciclo 
         && params.curso 
         && params.numDNI 
@@ -169,14 +169,12 @@ function crearMatricula(req, res) {
         // Ciclo Formativo
         matricula.ciclo_formativo.ciclo = params.ciclo // DAM, DAW, ASIR
         matricula.ciclo_formativo.curso = params.curso // Año curso
-        //  params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
-        //      matricula.ciclo_formativo.grado.medio = params.gradoMedio
-        //      : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
-
+          params.gradoMedio ? // Medio o superior (Siempre Superior de momento)
+              matricula.ciclo_formativo.grado.medio = params.gradoMedio
+              : matricula.ciclo_formativo.grado.superior = params.gradoSuperior;
 
         // Via acceso
         matricula.via_acceso = params.viaAcceso // --> Requisitos Academicos, Prueba de Acceso o Sin Requisitos Academicos
-
 
         // Fecha Inscripcion --> Se agregara automaticamente al hacer la matricula
         var arrFechaInscripcion = params.fechaInscripcion.split("/") // 10/05/1994
