@@ -26,7 +26,7 @@ var matriculasSchema = Schema({
     
     domicilio: {
         calle: String,
-        numero: Number
+        numero: String
     },
     
     provincia: String,
