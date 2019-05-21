@@ -238,7 +238,7 @@ function cargarMatriculas(req, res) {
 
         params.rows ? rowsACargar = params.rows : rowsACargar = 30
 
-        Matricula.find({ "estado_matricula": estado }).limit(rowsACargar).exec({
+        Matricula.find({ "estado_matricula": estado }).limit(2).exec({
             function(err, matriculas) {
                 if (err) {
                     res.status(500).send({
