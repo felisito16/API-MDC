@@ -236,10 +236,9 @@ function cargarMatriculas(req, res) {
         var rowsACargar
         var estado = params.estado
 
-        //params.rows ? rowsACargar = params.rows : rowsACargar = 30
+        params.rows ? rowsACargar = params.rows : rowsACargar = 30
 
-        Matricula.find({ "estado_matricula": estado }).limit(2).exec({
-            function(err, matriculas) {
+        Matricula.find({ "estado_matricula": estado }).limit(rowsACargar).exec(function(err, matriculas) {
                 if (err) {
                     res.status(500).send({
                         message: "Error en el servidor",
@@ -257,7 +256,7 @@ function cargarMatriculas(req, res) {
                     }
                 }
             }
-        })
+        )
     } else {
         res.status(200).send({
             message: "Datos a introducir incorrectos o incompletos"
