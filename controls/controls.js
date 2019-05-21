@@ -238,7 +238,7 @@ function cargarMatriculas(req, res) {
 
         params.rows ? rowsACargar = params.rows : rowsACargar = 30
 
-        Matricula.find({ "estado_matricula": estado }).limit(rowsACargar).exec(function(err, matriculas) {
+        Matricula.find({ "estado_matricula": estado }).limit(parseInt(rowsACargar)).exec(function(err, matriculas) {
                 if (err) {
                     res.status(500).send({
                         message: "Error en el servidor",
