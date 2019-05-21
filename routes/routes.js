@@ -12,5 +12,6 @@ api.get("/6pendientes", UsersController.pendientesInicio)
 api.post("/validar", UsersController.validar)
 api.post("/save", UsersController.saveUsuario)
 api.post("/saveMatricula", UsersController.crearMatricula)
+api.post("/cargarMatriculas", UsersController.cargarMatriculas)
 
 module.exports = api;
