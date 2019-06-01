@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var matriculas_gestionSchema = Schema({
 
-    _idUsuario: String,
-    _idMatricula: String
+    idUsuario: String,
+    idMatricula: String
 
 });
 

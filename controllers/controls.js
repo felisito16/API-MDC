@@ -269,8 +269,8 @@ function matriculaAsignada(req, res) {
     // 
     // * _id : id del usuario logeado
     if (req.params._idUsuario) {
-        var idUsuario = req.params._idUsuario
-        Asignacion_gestion_matricula.find({ "_idUsuari": idUsuario }).exec(function (err, matricula) {
+        var idUsuario = req.params.idUsuario
+        Asignacion_gestion_matricula.find({ "idUsuario": idUsuario }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
