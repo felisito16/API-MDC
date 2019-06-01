@@ -2,7 +2,7 @@ var Usuario = require("../models/usuarios")
 var Matricula = require("../models/matriculas")
 var Ciclo = require("../models/ciclos")
 var Asignatura = require("../models/asignaturas")
-var Matricula_gestion = require("../models/matriculas_gestion")
+var Asignacion_gestion_matricula = require("../models/asignacion_gestion_matricula")
 
 function prueba(req, res) {
     res.status(200).send({
@@ -269,7 +269,7 @@ function matriculaAsignada(req, res) {
     // 
     // * _id : id del usuario logeado
     if (req.params._idUsuario) {
-        Matricula_gestion.find({ _idUsuario: req.params._idUsuario }).exec(function (err, matricula) {
+        Asignacion_gestion_matricula.find({ _idUsuario: req.params._idUsuario }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
