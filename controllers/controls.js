@@ -2,6 +2,7 @@ var Usuario = require("../models/usuarios")
 var Matricula = require("../models/matriculas")
 var Ciclo = require("../models/ciclos")
 var Asignatura = require("../models/asignaturas")
+var Matricula_gestion = require("../models/matriculas_gestion")
 
 function prueba(req, res) {
     res.status(200).send({
@@ -238,24 +239,24 @@ function cargarMatriculas(req, res) {
 
         params.rows ? rowsACargar = params.rows : rowsACargar = 30
 
-        Matricula.find({ "estado_matricula": estado }).limit(parseInt(rowsACargar)).exec(function(err, matriculas) {
-                if (err) {
-                    res.status(500).send({
-                        message: "Error en el servidor",
-                        error: err
+        Matricula.find({ "estado_matricula": estado }).limit(parseInt(rowsACargar)).exec(function (err, matriculas) {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor",
+                    error: err
+                })
+            } else {
+                if (matriculas != 0) {
+                    res.status(200).send({
+                        matriculas: matriculas
                     })
                 } else {
-                    if (matriculas != 0) {
-                        res.status(200).send({
-                            matriculas: matriculas
-                        })
-                    } else {
-                        res.status(200).send({
-                            message: "Matriculas no encontradas"
-                        })
-                    }
+                    res.status(200).send({
+                        message: "Matriculas no encontradas"
+                    })
                 }
             }
+        }
         )
     } else {
         res.status(200).send({
@@ -264,26 +265,63 @@ function cargarMatriculas(req, res) {
     }
 }
 
-function pendientesInicio(req, res) {
-
-    Matricula.find({}).limit(6).exec(function (err, matriculas) {
-        if (err) {
-            res.status(500).send({
-                message: "Error en el servidor",
-                messageError: err,
-            })
-        } else {
-            if (matriculas != 0) {
-                res.status(200).send({
-                    matriculas
+function matriculaAsignada(req, res) {
+    // 
+    // * _id : id del usuario logeado
+    if (req.params._idUsuario) {
+        Matricula_gestion.find({ _idUsuario: req.params._idUsuario }).exec(function (err, matricula) {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor",
+                    messageError: err,
                 })
             } else {
-                res.status(200).send({
-                    message: "Matriculas no encontradas"
-                })
+                if (matricula != 0) {
+                    res.status(200).send({
+                        matricula: matricula
+                    })
+                } else {
+                    res.status(200).send({
+                        message: "Matriculas no encontradas"
+                    })
+                }
             }
-        }
-    })
+        })
+    } else {
+        res.status(200).send({
+            error: "Falta el parametro de la url en la peticion"
+        })
+    }
+}
+
+// Asignar Matricula
+function asignarMatricula(req, res) {
+    // 
+    // * _id : id del usuario logeado
+    if (req.body._id) {
+        Matricula_gestion.find({ _idUsuario: req.params._id }).exec(function (err, matricula) {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor",
+                    messageError: err,
+                })
+            } else {
+                if (matricula != 0) {
+                    res.status(200).send({
+                        matricula: matricula
+                    })
+                } else {
+                    res.status(200).send({
+                        message: "Matriculas no encontradas"
+                    })
+                }
+            }
+        })
+    } else {
+        res.status(200).send({
+            error: "Falta el parametro de la url en la peticion"
+        })
+    }
 }
 
 function erroneasInicio(req, res) {
@@ -465,7 +503,7 @@ module.exports = {
     validar,
     crearMatricula,
     consultarMatricula,
-    pendientesInicio,
+    matriculaAsignada,
     cargarMatriculas
 }
 
