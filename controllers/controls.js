@@ -282,7 +282,8 @@ function matriculaAsignada(req, res) {
                     })
                 } else {
                     res.status(200).send({
-                        message: "Matriculas no encontradas"
+                        message: "Matriculas no encontradas",
+                        _idUsuario: req.params._idUsuario
                     })
                 }
             }
