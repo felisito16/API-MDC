@@ -1,5 +1,5 @@
 var express = require('express')
-var UsersController = require('../controls/controls')
+var UsersController = require('../controllers/controls')
 
 var api = express.Router()
 
