@@ -268,7 +268,7 @@ function cargarMatriculas(req, res) {
 function matriculaAsignada(req, res) {
     // 
     // * _id : id del usuario logeado
-    if (req.params._idUsuario) {
+    if (req.params.idUsuario) {
         var idUsuario = req.params.idUsuario
         Asignacion_gestion_matricula.find({ "idUsuario": idUsuario }).exec(function (err, matricula) {
             if (err) {
@@ -284,7 +284,7 @@ function matriculaAsignada(req, res) {
                 } else {
                     res.status(200).send({
                         message: "Matriculas no encontradas",
-                        _idUsuario: req.params._idUsuario,
+                        idUsuario: req.params.idUsuario,
                         matricula: matricula
                     })
                 }
