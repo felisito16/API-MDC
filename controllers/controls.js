@@ -334,7 +334,7 @@ function deleteMatricula(req, res) {
         var id = req.params.id
         var mongoose = require("mongoose")
 
-        Matricula.remove({ "_id": new mongoose.mongo.ObjectId(id) }).exec(function (err, matriculaRemoved) {
+        Matricula.deleteOne({ "_id": new mongoose.mongo.ObjectId(id) }).exec(function (err, matriculaRemoved) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
