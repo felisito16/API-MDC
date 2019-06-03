@@ -26,7 +26,7 @@ var matriculasSchema = Schema({
     
     domicilio: {
         calle: String,
-        numero: Number
+        numero: String
     },
     
     provincia: String,
@@ -50,10 +50,10 @@ var matriculasSchema = Schema({
         ciclo: String,
         curso: String,
         
-        /* NO USAR grado: {
+        grado: {
             medio: Boolean,
             superior: Boolean // DEFECTO
-        } NO USAR */
+        }
 
     },
 
