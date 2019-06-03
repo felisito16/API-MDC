@@ -339,12 +339,10 @@ function deleteMatricula(req, res) {
                 res.status(500).send({
                     message: "Error en el servidor",
                     messageError: err,
-                    id: id,
-                    paramid: params.id,
-                    matricula: matricula
+                    id: id
                 })
             } else {
-                if (matricula != 0) {
+                if (matriculaRemoved != 0) {
                     res.status(200).send({
                         matriculaRemoved : matriculaRemoved
                     })
