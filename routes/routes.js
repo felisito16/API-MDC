@@ -13,5 +13,6 @@ api.post("/validar", UsersController.validar)
 api.post("/save", UsersController.saveUsuario)
 api.post("/saveMatricula", UsersController.crearMatricula)
 api.post("/cargarMatriculas", UsersController.cargarMatriculas)
+api.delete("/deleteMatricula/:id", UsersController.deleteMatricula)
 
 module.exports = api;

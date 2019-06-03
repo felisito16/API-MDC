@@ -327,14 +327,14 @@ function asignarMatricula(req, res) {
     }
 }
 
-function erroneasInicio(req, res) {
-    var params = req.params
+function deleteMatricula(req, res) {
+    var id = req.params.id
 
-    if (params.id) {
-        var id = params.id
+    if (req.params.id) {
+        var id = req.params.id
         var mongoose = require("mongoose")
 
-        Matricula.find({ "_id": new mongoose.mongo.ObjectId(id) }).exec(function (err, matricula) {
+        Matricula.remove({ "_id": new mongoose.mongo.ObjectId(id) }).exec(function (err, matriculaRemoved) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
@@ -346,14 +346,18 @@ function erroneasInicio(req, res) {
             } else {
                 if (matricula != 0) {
                     res.status(200).send({
-                        matricula
+                        matriculaRemoved : matriculaRemoved
                     })
                 } else {
                     res.status(200).send({
-                        message: "Matricula no encontrada"
+                        message: "La matricula no existe"
                     })
                 }
             }
+        })
+    } else {
+        res.status(200).send({
+            message: "Falta por especificar el id de la matricula"
         })
     }
 }
@@ -507,7 +511,8 @@ module.exports = {
     crearMatricula,
     consultarMatricula,
     matriculaAsignada,
-    cargarMatriculas
+    cargarMatriculas,
+    deleteMatricula
 }
 
 // Funciones ADICIONALES
