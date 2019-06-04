@@ -268,9 +268,10 @@ function cargarMatriculas(req, res) {
 function matriculaAsignada(req, res) {
     // 
     // * _id : id del usuario logeado
-    if (req.params.idUsuario) {
-        var idUsuario = req.params.idUsuario
-        Asignacion_gestion_matricula.find({ "idUsuario": idUsuario }).exec(function (err, matricula) {
+    /* if (req.params.idUsuario) {
+        var idUsuario = req.params.idUsuario */
+        /* "idUsuario": idUsuario */
+        Asignacion_gestion_matricula.find({ }).exec(function (err, matricula) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
@@ -290,11 +291,11 @@ function matriculaAsignada(req, res) {
                 }
             }
         })
-    } else {
+    /* } else {
         res.status(200).send({
             error: "Falta el parametro de la url en la peticion"
         })
-    }
+    } */
 }
 
 // Asignar Matricula
