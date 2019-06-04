@@ -361,14 +361,14 @@ function deleteMatricula(req, res) {
 }
 
  
-// Enlace foto dni
+/* // Enlace foto dni
 matricula.foto_dni_pasaporte = params.enlaceFotoDNI
  
 // Enlace foto seguridad social
 matricula.foto_seguridad_social = params.enlaceFotoSeguridadSocial
  
 // Enlace usuario
-matricula.foto_usuario = params.enlaceFotoUsuario
+matricula.foto_usuario = params.enlaceFotoUsuario */
  /* 
 // Modulos profesionales
 matricula.modulos_profesionales = params.modulosProfesionales
