@@ -268,10 +268,9 @@ function cargarMatriculas(req, res) {
 function matriculaAsignada(req, res) {
     // METODO GET
     // * idUsuario : id del usuario logeado
-    /* if (req.params.idUsuario) {
-        var idUsuario = req.params.idUsuario */
-        /* "idUsuario": idUsuario */
-        asignacionMatricula.find({}).exec(function (err, matriculaAsignada) {
+    if (req.params.idUsuario) {
+        var idUsuario = req.params.idUsuario
+        asignacionMatricula.find({ "idUsuario": idUsuario }).exec(function (err, matriculaAsignada) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
@@ -285,17 +284,16 @@ function matriculaAsignada(req, res) {
                 } else {
                     res.status(200).send({
                         message: "Matriculas no encontradas",
-                        idUsuario: req.params.idUsuario,
-                        matricula: matriculaAsignada
+                        idUsuario: req.params.idUsuario
                     })
                 }
             }
         })
-    /* } else {
+    } else {
         res.status(200).send({
             error: "Falta el parametro de la url en la peticion"
         })
-    } */
+    }
 }
 
 // Asignar Matricula
@@ -344,7 +342,7 @@ function deleteMatricula(req, res) {
             } else {
                 if (matriculaRemoved != 0) {
                     res.status(200).send({
-                        matriculaRemoved : matriculaRemoved
+                        matriculaRemoved: matriculaRemoved
                     })
                 } else {
                     res.status(200).send({
@@ -360,7 +358,7 @@ function deleteMatricula(req, res) {
     }
 }
 
- 
+
 /* // Enlace foto dni
 matricula.foto_dni_pasaporte = params.enlaceFotoDNI
  
@@ -369,7 +367,7 @@ matricula.foto_seguridad_social = params.enlaceFotoSeguridadSocial
  
 // Enlace usuario
 matricula.foto_usuario = params.enlaceFotoUsuario */
- /* 
+/* 
 // Modulos profesionales
 matricula.modulos_profesionales = params.modulosProfesionales
  
