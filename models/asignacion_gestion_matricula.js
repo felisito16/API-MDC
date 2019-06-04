@@ -8,4 +8,4 @@ var Asignacion_gestion_matriculaSchema = Schema({
 
 });
 
-module.exports = mongoose.model('Asignacion_gen_matricula', Asignacion_gestion_matriculaSchema);
+module.exports = mongoose.model('Asignacion_gestion_matricula', Asignacion_gestion_matriculaSchema);
