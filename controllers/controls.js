@@ -2,7 +2,7 @@ var Usuario = require("../models/usuarios")
 var Matricula = require("../models/matriculas")
 var Ciclo = require("../models/ciclos")
 var Asignatura = require("../models/asignaturas")
-var Asignacion_gestion_matricula = require("../models/asignacion_gestion_matricula")
+var asignacionMatricula = require("../models/asignacionMatricula")
 
 function prueba(req, res) {
     res.status(200).send({
@@ -266,27 +266,27 @@ function cargarMatriculas(req, res) {
 }
 
 function matriculaAsignada(req, res) {
-    // 
-    // * _id : id del usuario logeado
+    // METODO GET
+    // * idUsuario : id del usuario logeado
     /* if (req.params.idUsuario) {
         var idUsuario = req.params.idUsuario */
         /* "idUsuario": idUsuario */
-        Asignacion_gestion_matricula.find({ }).exec(function (err, matricula) {
+        asignacionMatricula.find({}).exec(function (err, matriculaAsignada) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
                     messageError: err,
                 })
             } else {
-                if (matricula != 0) {
+                if (matriculaAsignada != 0) {
                     res.status(200).send({
-                        matricula: matricula
+                        matricula: matriculaAsignada
                     })
                 } else {
                     res.status(200).send({
                         message: "Matriculas no encontradas",
                         idUsuario: req.params.idUsuario,
-                        matricula: matricula
+                        matricula: matriculaAsignada
                     })
                 }
             }
