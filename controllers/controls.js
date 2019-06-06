@@ -169,6 +169,8 @@ function crearMatricula(req, res) {
         // Estado de la matricula actual --> Se agregara automaticamente al hacer la matricula
         matricula.estado_matricula = params.estadoMatricula
 
+        // Asignamos que no tiene usuario al crearse la matricula
+        matricula.idUsuarioAsignado = "";
 
         matricula.save((err, matriculaStore) => {
             if (err) {
@@ -193,7 +195,6 @@ function crearMatricula(req, res) {
             message: "Datos a introducir incorrectos o incompletos"
         })
     }
-
 }
 
 function consultarMatricula(req, res) {

@@ -68,7 +68,7 @@ var matriculasSchema = Schema({
     },
 
     estado_matricula: String, // POR DEFECTO (pendiente) pendiente, erronea o tramite 
-    idUsuarioAsignado: String
+    idUsuarioAsignado: String /* ID MongoDB del usuario que esta asignado a esta matricula */
 
     /*
 
