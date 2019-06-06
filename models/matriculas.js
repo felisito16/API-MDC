@@ -67,7 +67,8 @@ var matriculasSchema = Schema({
         anio: Number,
     },
 
-    estado_matricula: String // POR DEFECTO (pendiente) pendiente, erronea o tramite 
+    estado_matricula: String, // POR DEFECTO (pendiente) pendiente, erronea o tramite 
+    idUsuarioAsignado: String
 
     /*
 
