@@ -257,8 +257,7 @@ function cargarMatriculas(req, res) {
                     })
                 }
             }
-        }
-        )
+        })
     } else {
         res.status(200).send({
             message: "Datos a introducir incorrectos o incompletos"
@@ -271,7 +270,7 @@ function matriculaAsignada(req, res) {
     // * idUsuario : id del usuario logeado
     if (req.params.idUsuario) {
         var idUsuario = req.params.idUsuario
-        asignacionMatricula.find({ "idUsuario": idUsuario }).exec(function (err, matriculaAsignada) {
+        Matricula.find({ "idUsuarioAsignado": idUsuario }).exec(function (err, matriculaAsignada) {
             if (err) {
                 res.status(500).send({
                     message: "Error en el servidor",
@@ -280,10 +279,12 @@ function matriculaAsignada(req, res) {
             } else {
                 if (matriculaAsignada != 0) {
                     res.status(200).send({
+                        encontrado: true,
                         matricula: matriculaAsignada
                     })
                 } else {
                     res.status(200).send({
+                        encontrado: false,
                         message: "Matriculas no encontradas",
                         idUsuario: req.params.idUsuario
                     })
