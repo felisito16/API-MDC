@@ -14,6 +14,6 @@ api.post("/save", UsersController.saveUsuario)
 api.post("/saveMatricula", UsersController.crearMatricula)
 api.post("/cargarMatriculas", UsersController.cargarMatriculas)
 api.delete("/deleteMatricula/:id", UsersController.deleteMatricula)
-api.put("/matricula/:id", UsersController.asignarMatricula)
+api.put("/asignarMatricula/:id", UsersController.asignarMatricula)
 
 module.exports = api;
