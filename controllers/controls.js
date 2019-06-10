@@ -305,8 +305,12 @@ function asignarMatricula(req, res) {
     // * req.body -> idUsuarioAsignado : id del usuario logeado
     var body = req.body
     var params = req.params
+    
     if (params.id) {
+
+        var id = params.id
         var update = body
+
         if (update.idUsuarioAsignado) {
             Matricula.findByIdAndUpdate(id, update, { new: true },
                 (err, matriculaAsignada) => {
