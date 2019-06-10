@@ -229,11 +229,11 @@ function consultarMatricula(req, res) {
 }
 
 function cargarMatriculas(req, res) {
-    var params = req.body;
     // parametros por POST
     // * params.estado = pendiente, erronea, tramite
     // - params.rows = Number
-
+    var params = req.body;
+    
     if (params.estado) {
         var rowsACargar
         var estado = params.estado
@@ -300,30 +300,45 @@ function matriculaAsignada(req, res) {
 
 // Asignar Matricula
 function asignarMatricula(req, res) {
-    // 
-    // * _id : id del usuario logeado
-    if (req.body._id) {
-        Matricula_gestion.find({ _idUsuario: req.params._id }).exec(function (err, matricula) {
-            if (err) {
-                res.status(500).send({
-                    message: "Error en el servidor",
-                    messageError: err,
+    // METODO PUT
+    // * req.params -> id : id de la matricula a actualizar
+    // * req.body -> idUsuarioAsignado : id del usuario logeado
+    var body = req.body
+    var params = req.params
+    if (params.id) {
+        var update = body
+        if (update.idUsuarioAsignado) {
+            Matricula.findByIdAndUpdate(idUsuario, update, { new: true },
+                (err, matriculaAsignada) => {
+                    if (err) {
+                        res.status(500).send({
+                            message: "Error en el servidor",
+                            messageError: err,
+                        })
+                    } else {
+                        if (matriculaAsignada) {
+                            res.status(200).send({
+                                encontrado: true,
+                                matriculaUpdated: matriculaAsignada
+                            })
+                        } else {
+                            res.status(200).send({
+                                encontrado: false,
+                                message: "Matricula a asignar no encontrada",
+                                update: update
+                            })
+                        }
+                    }
                 })
-            } else {
-                if (matricula != 0) {
-                    res.status(200).send({
-                        matricula: matricula
-                    })
-                } else {
-                    res.status(200).send({
-                        message: "Matriculas no encontradas"
-                    })
-                }
-            }
-        })
+        }
+        else {
+            res.status(200).send({
+                error: "Falta el usuario a asignar la matricula"
+            })
+        }
     } else {
         res.status(200).send({
-            error: "Falta el parametro de la url en la peticion"
+            error: "Faltan la matricula a asignar"
         })
     }
 }
@@ -458,7 +473,8 @@ module.exports = {
     consultarMatricula,
     matriculaAsignada,
     cargarMatriculas,
-    deleteMatricula
+    deleteMatricula,
+    asignarMatricula
 }
 
 // Funciones ADICIONALES
