@@ -308,7 +308,7 @@ function asignarMatricula(req, res) {
     if (params.id) {
         var update = body
         if (update.idUsuarioAsignado) {
-            Matricula.findByIdAndUpdate(idUsuario, update, { new: true },
+            Matricula.findByIdAndUpdate(id, update, { new: true },
                 (err, matriculaAsignada) => {
                     if (err) {
                         res.status(500).send({
