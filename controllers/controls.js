@@ -501,9 +501,7 @@ matricula.gestion_matricula.fecha_gestion.anio = params.anioFechaGestion
 */
 
 module.exports = {
-    prueba,
     saveUsuario,
-    validarUsuario,
     validar,
     crearMatricula,
     consultarMatricula,
