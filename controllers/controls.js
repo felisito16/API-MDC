@@ -4,13 +4,13 @@ var Ciclo = require("../models/ciclos")
 var Asignatura = require("../models/asignaturas")
 var asignacionMatricula = require("../models/asignacionMatricula")
 
-function prueba(req, res) {
+/* function prueba(req, res) {
     res.status(200).send({
         message: "Esta ruta es una prueba"
     });
-}
+} */
 
-function validarUsuario(req, res) {
+/* function validarUsuario(req, res) {
 
     var userEmail = req.params.usuario
     var userPass = req.params.pass
@@ -32,7 +32,7 @@ function validarUsuario(req, res) {
             }
         }
     })
-}
+} */
 
 function saveUsuario(req, res) {
     var usuario = new Usuario();
@@ -228,6 +228,42 @@ function consultarMatricula(req, res) {
     }
 }
 
+/* Con esta funcion cargamos todas las matriculas que 
+tiene asignada un usuario logeado */
+function cargarMatriculasAsignadas(req, res) {
+    // parametros por POST
+    // * params.idUsuario = id del usuario logeado
+    var params = req.params;
+
+    if (params.idUsuario) {
+        var rowsACargar;
+
+        params.rows ? rowsACargar = params.rows : rowsACargar = 30
+
+        Matricula.find({ "idUsuarioAsignado": params.idUsuario }).limit(parseInt(rowsACargar)).exec(function (err, matriculas) {
+            if (err) {
+                res.status(500).send({
+                    message: "Error en el servidor",
+                    error: err
+                })
+            } else {
+                if (matriculas != 0) {
+                    res.status(200).send({
+                        matriculas: matriculas
+                    })
+                } else {
+                    res.status(200).send({
+                        message: "Matriculas no encontradas"
+                    })
+                }
+            }
+        })
+    } else {
+        res.status(200).send({
+            message: "Datos a introducir incorrectos o incompletos"
+        })
+    }
+}
 function cargarMatriculas(req, res) {
     // parametros por POST
     // * params.estado = pendiente, erronea, tramite
@@ -473,7 +509,8 @@ module.exports = {
     matriculaAsignada,
     cargarMatriculas,
     deleteMatricula,
-    asignarMatricula
+    asignarMatricula,
+    cargarMatriculasAsignadas
 }
 
 // Funciones ADICIONALES
