@@ -13,7 +13,7 @@ api.post("/validar", UsersController.validar)
 api.post("/save", UsersController.saveUsuario)
 api.post("/saveMatricula", UsersController.crearMatricula)
 api.post("/cargarMatriculas", UsersController.cargarMatriculas)
-api.get("/cargarMatriculasAsignadas/:idUsuario", UsersController.cargarMatriculasAsignadas)
+api.post("/cargarMatriculasAsignadas/:idUsuario", UsersController.cargarMatriculasAsignadas)
 api.delete("/deleteMatricula/:id", UsersController.deleteMatricula)
 api.put("/asignarMatricula/:id", UsersController.asignarMatricula)
 

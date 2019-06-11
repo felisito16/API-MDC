@@ -234,11 +234,12 @@ function cargarMatriculasAsignadas(req, res) {
     // parametros por POST
     // * params.idUsuario = id del usuario logeado
     var params = req.params;
+    var body = req.body;
 
     if (params.idUsuario) {
         var rowsACargar;
 
-        params.rows ? rowsACargar = params.rows : rowsACargar = 30
+        body.rows ? rowsACargar = body.rows : rowsACargar = 30
 
         Matricula.find({ "idUsuarioAsignado": params.idUsuario }).limit(parseInt(rowsACargar)).exec(function (err, matriculas) {
             if (err) {
