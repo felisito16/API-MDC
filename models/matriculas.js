@@ -36,7 +36,7 @@ var matriculasSchema = Schema({
         codigo_postal: Number
     },
     
-    email: String,                 // DATOS PERSONALES 
+    email: String,
     
     centro_inscripcion: {
         nombre_centro: String,
@@ -52,7 +52,7 @@ var matriculasSchema = Schema({
         
         grado: {
             medio: Boolean,
-            superior: Boolean // DEFECTO
+            superior: Boolean
         }
 
     },
